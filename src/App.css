@@ -2,7 +2,7 @@
   text-align: center;
   margin: 0 auto;
   min-height: 100%;
-  direction: rtl;
+  direction: ltr;
 }
 
 html, body, .App {
@@ -32,10 +32,10 @@ body {
   flex-direction: column;
   width: 100%;
   padding: 0;
-  -webkit-transition: right .3s ease;
-  -moz-transition: right .3s ease;
-  -ms-transition: right .3s ease;
-  transition: right .3s ease;
+  -webkit-transition: left .3s ease;
+  -moz-transition: left .3s ease;
+  -ms-transition: left .3s ease;
+  transition: left .3s ease;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -101,7 +101,6 @@ body {
   url(/fonts/Monoton/Monoton.svg) format('svg');
 } */
 
-
 html {
   height: 100%;
   box-sizing: border-box;
@@ -109,4 +108,15 @@ html {
 
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+body.light-mode {
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: #1a1919;
+  color: #999;
 }

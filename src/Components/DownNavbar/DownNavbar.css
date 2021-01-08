@@ -5,14 +5,12 @@
     padding: 15px;
 }
 
-.copyright-span {
+.about-site {
     text-align: right;
-    direction: rtl;
 }
 
-.about-site {
+.copyright-span {
     text-align: left;
-    direction: ltr;
 }
 
 .down-nav-link {
