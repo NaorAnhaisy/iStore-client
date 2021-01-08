@@ -1,0 +1,33 @@
+.policy-page {
+    padding: 30px;
+    padding-top: 130px;
+    background: #fff;
+    color: #353535;
+}
+
+.policy-header {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-size: 4rem;
+}
+
+.policy-content-div {
+    padding: 30px;
+    padding-right: 40px;
+    padding-left: 40px;
+    box-shadow: 0 0 14px 3px #e2e2e2;
+    font-family: 'Assistant', sans-serif;
+}
+
+.policy-content-header {
+    text-align: right;
+    padding-right: 15px;
+    margin-bottom: 20px;
+    font-size: 2.8rem;
+}
+
+.policy-content {
+    text-align: right;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}

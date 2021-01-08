@@ -1,0 +1,2 @@
+export const serverApiUrl = process.env.NODE_ENV === "production" ? "https://istore.co.il/server" : "http://localhost:5000/server";
+export const clientUrl = process.env.NODE_ENV === "production" ? "https://istore.co.il" : "http://localhost:3000";

@@ -1,0 +1,72 @@
+.down-navbar {
+    background: #022144;
+    color: white;
+    display: block;
+    padding: 15px;
+}
+
+.copyright-span {
+    text-align: right;
+    direction: rtl;
+}
+
+.about-site {
+    text-align: left;
+    direction: ltr;
+}
+
+.down-nav-link {
+    font-size: medium;
+    display: inline;
+    padding: 0;
+    margin: 10px;
+}
+
+.developer-name {
+    color: #abd4ff;
+    text-decoration: none;
+    transition: all .4s;
+}
+
+.developer-name:hover {
+    color: #4a8ed8;
+}
+
+@media(min-width: 400px) {
+    .down-navbar-nav-container {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+}
+
+@media (max-width: 267px) {
+    .push {
+        height: 122px;
+    }
+}
+
+@media (min-width: 268px) and (max-width: 319px) {
+    .push {
+        height: 98px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 613px) {
+    .push {
+        height: 74px;
+    }
+}
+
+@media (min-width: 614px) {
+    .push {
+        height: 50px;
+    }
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}

@@ -1,38 +1,112 @@
 .App {
   text-align: center;
+  margin: 0 auto;
+  min-height: 100%;
+  direction: rtl;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body, .App {
+  color: black;
+  background-color: rgba(255, 255, 255, 1);
+  background-image: linear-gradient(to left, rgb(255, 255, 255), rgb(236, 243, 255));
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body>#root>div {
+  min-height: 100vh !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  /* font-family: VarelaRound !important; */
+  right: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  overflow-x: hidden !important;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  padding: 0;
+  -webkit-transition: right .3s ease;
+  -moz-transition: right .3s ease;
+  -ms-transition: right .3s ease;
+  transition: right .3s ease;
+  -webkit-overflow-scrolling: touch;
 }
 
-.App-link {
-  color: #61dafb;
+::-moz-selection {
+  /* Code for Firefox */
+  color: black;
+  background: rgb(179 212 252);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+::selection {
+  color: black;
+  background: rgb(179 212 252);
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: .4em;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #cbcbcb;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(149, 149, 149)
+}
+
+/* @font-face {
+  font-family: VarelaRound;
+  src: url(/fonts/VarelaRound/VarelaRound.woff) format('woff'),
+  url(/fonts/VarelaRound/VarelaRound.eot) format('embedded-opentype'),
+  url(/fonts/VarelaRound/VarelaRound.woff2) format('woff2'),
+  url(/fonts/VarelaRound/VarelaRound.ttf) format('truetype'),
+  url(/fonts/VarelaRound/VarelaRound.svg) format('svg');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: RubikBold;
+  src: url(/fonts/rubik/Rubik-Bold.woff) format('woff'),
+  url(/fonts/rubik/Rubik-Bold.ttf) format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Monoton;
+  src: url(/fonts/Monoton/Monoton.woff) format('woff'),
+  url(/fonts/Monoton/Monoton.eot) format('embedded-opentype'), 
+  url(/fonts/Monoton/Monoton.woff2) format('woff2'),
+  url(/fonts/Monoton/Monoton.ttf) format('truetype'),
+  url(/fonts/Monoton/Monoton.svg) format('svg');
+} */
+
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }

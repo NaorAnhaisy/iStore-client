@@ -1,0 +1,9 @@
+.reset-password-email {
+    color: cadetblue;
+}
+
+.reset-password-login-link {
+    display: block;
+    margin-top: 15px;
+    font-size: larger;
+}
