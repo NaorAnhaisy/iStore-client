@@ -56,23 +56,15 @@ export default function MainNavbar(props) {
                     {createNavbarLiElements([
                         { name: "Dashboard", icon: "home" },
                         { name: "Store Products", icon: "pencil-alt" },
-                        { name: "Store Orders", icon: "user" },
+                        { name: "Store Orders", icon: "store" },
                         { name: "Settings", icon: "cog" },
                         { name: "Contact Us", icon: "envelope" },
                     ])}
-                    {/* <li>
-                        <a href="#otherSections" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle" role="button" aria-controls="otherSections">
-                            <i className="fas fa-sync"></i>Other sections
-                        </a>
-                        <ul className="collapse list-unstyled" id="otherSections">
-                            <li>
-                                <a className="scroll-link" href="#section-3">Our projects</a>
-                            </li>
-                            <li>
-                                <a className="scroll-link" href="#section-4">We think that...</a>
-                            </li>
-                        </ul>
-                    </li> */}
+                    <hr style={{background: "#989898"}} />
+                    {createNavbarLiElements([
+                        { name: "Login", icon: "user" },
+                        { name: "Register", icon: "sign-in-alt" }
+                    ])}
                 </ul>
             </nav>
 

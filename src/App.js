@@ -16,6 +16,20 @@ import StoreProducts from './Components/StoreProducts/StoreProducts'
 import StoreOrders from './Components/StoreOrders/StoreOrders'
 import Settings from './Components/Settings/Settings'
 import ContactUs from './Components/ContactUs/ContactUs'
+import Darkmode from 'darkmode-js';
+
+const options = {
+  bottom: '70px',
+  right: 'unset',
+  left: '32px',
+  mixColor: '#dcdcdc',
+  backgroundColor: '#10171D',
+  buttonColorDark: '#10171D',
+  buttonColorLight: '#fff',
+  label: '🌓'
+}
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
 
 function App() {
   return (

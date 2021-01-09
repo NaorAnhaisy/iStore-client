@@ -7,8 +7,7 @@
 
 html, body, .App {
   color: black;
-  background-color: rgba(255, 255, 255, 1);
-  background-image: linear-gradient(to left, rgb(255, 255, 255), rgb(236, 243, 255));
+  background: rgb(255, 255, 255);
   scroll-behavior: smooth;
   overflow-x: hidden !important;
 }

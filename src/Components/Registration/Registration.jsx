@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Form, Button, InputGroup, Container } from 'react-bootstrap';
+// import { Form, Button, InputGroup, Container } from 'react-bootstrap';
 import './Registration.css';
 import AuthService from '../../Auth/AuthService';
 // import Loader from '../Loader/Loader';
-import { Link } from 'react-router-dom';
-import { clientUrl } from '../../globals.js'
+// import { Link } from 'react-router-dom';
+// import { clientUrl } from '../../globals.js'
 
 class Registration extends Component {
 
@@ -119,144 +119,46 @@ class Registration extends Component {
 
     render() {
         return (
-            <Container className="registration-div">
-                {this.state.loading ?
-                    <Loader /> :
-                    <>
-                        <div className="title-div">
-                            <h2 className="authonticate-page-header">הרשמה ל- Bucard</h2>
+            <div className="account-forms-main">
+                <section class="signup">
+                    <div class="container account-forms-container">
+                        <div class="signup-content">
+                            <div class="signup-form">
+                                <h2 class="form-title">Sign up</h2>
+                                <form method="POST" class="register-form" id="register-form">
+                                    <div class="form-group">
+                                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                        <input type="text" name="name" id="name" placeholder="Your Name" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                        <input type="email" name="email" id="email" placeholder="Your Email" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                        <input type="password" name="pass" id="pass" placeholder="Password" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                        <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="localhost:3000" class="term-service">Terms of service</a></label>
+                                    </div>
+                                    <div class="form-group form-button">
+                                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="signup-image">
+                                <figure><img src="images/signup-image.jpg" alt="sing up" /></figure>
+                                <a href="localhost:3000" class="signup-image-link">I am already member</a>
+                            </div>
                         </div>
-                        {
-                            (this.state.msg !== "" && this.state.isSucced) ?
-                                <div>
-                                    <span className="msg success-msg">
-                                        {this.state.msg}
-                                    </span>
-
-                                    <a href={clientUrl + "/login"}>התחבר</a>
-                                </div>
-                                :
-                                <Form className="regist-login-form" onSubmit={this.handleSubmit}>
-                                    <Form.Group>
-                                        <Form.Label>
-                                            דוא"ל:
-                                        </Form.Label>
-                                        <InputGroup>
-                                            <Form.Control
-                                                className={"attached-icon-form " + this.handleRequiredControlClsName
-                                                    (this.state.Email, this.state.emailValid)
-                                                }
-                                                type="text"
-                                                name="Email"
-                                                autoComplete="off"
-                                                onChange={(event) => this.handleUserInput(event)}
-                                                placeholder="example@example.com" />
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text id="inputGroupPrepend">
-                                                    <img src="/images/email.png" alt="lock" className="attached-image-form" />
-                                                </InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                        </InputGroup>
-                                        {!this.state.emailValid && this.state.Email !== '' &&
-                                            <span className="error">
-                                                דוא"ל לא תקין
-                                    </span>
-                                        }
-                                    </Form.Group>
-
-                                    <Form.Group>
-                                        <Form.Label>
-                                            סיסמא:
-                                </Form.Label>
-                                        <InputGroup>
-                                            <Form.Control
-                                                className={"attached-icon-form " + this.handleRequiredControlClsName
-                                                    (this.state.Password, this.state.passwordValid)
-                                                }
-                                                type="password"
-                                                name="Password"
-                                                onChange={(event) => this.handleUserInput(event)}
-                                                placeholder="סיסמא" />
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text id="inputGroupPrepend">
-                                                    <img src="/images/locker.png" alt="lock" className="attached-image-form" />
-                                                </InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                        </InputGroup>
-                                        {!this.state.passwordValid && this.state.Password !== '' &&
-                                            <span className="error">
-                                                סיסמא לא תקינה
-                                    </span>
-                                        }
-                                        <span className="note">
-                                            <br />
-                                     סיסמא צריכה להכיל 6 תווים לפחות, הכוללת מספרים, אותיות גדולות וקטנות באנגלית בלבד.
-                                </span>
-                                    </Form.Group>
-
-                                    <Form.Group>
-                                        <Form.Label>
-                                            חזור שנית על הסיסמא:
-                                        </Form.Label>
-                                        <InputGroup>
-                                            <Form.Control
-                                                type="password"
-                                                name="SubmitPassword"
-                                                className="attached-icon-form"
-                                                onChange={(event) => this.handleUserInput(event)}
-                                                placeholder="אמת סיסמא" />
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text id="inputGroupPrepend">
-                                                    <img src="/images/verifyPassword.png" alt="verifyPass" className="attached-image-form" />
-                                                </InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                        </InputGroup>
-                                        {!this.state.submitPasswordValid &&
-                                            <span className="error">
-                                                הסיסמאות לא תואמות
-                                            </span>
-                                        }
-                                    </Form.Group>
-                                    <br />
-
-
-                                    <div className="registration-checkbox-exp">
-                                        <div className="registration-checkbox">
-                                            <div>
-
-                                                <input type="checkbox" id="isChecked" value="" name="isChecked" checked={this.state.isChecked} onChange={this.handleUserInput} />
-                                                <label className="regist-checkbox-label" htmlFor="isChecked">
-
-                                                    <span className="regist-checkbox-span"></span>
-                                                    <span>
-
-                                                            אני מאשר/ת שקראתי ושהסכמתי ל<a href={clientUrl + "/policy"} target="_blank" rel="noopener noreferrer">תנאי השימוש ומדיניות</a> של <strong>Bucard</strong>.
-                                                    </span>
-
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <Button className="register-button" variant="primary" type="submit" disabled={!this.state.formValid}>
-                                        הירשמו
-                                        </Button>
-
-                                    <div className="links-div registration-login-link">
-                                        יש לכם כבר משתמש? <Link className="login-link " to="/login">היכנסו לחשבון »</Link>
-                                    </div>
-
-                                    {
-                                        this.state.msg !== "" &&
-                                        <div className='register-msg error-msg'>
-                                            {this.state.msg}
-                                        </div>
-                                    }
-                                </Form >
-                        }
-                    </>
-                }
-            </Container >
+                    </div>
+                </section>
+            </div>
         )
     }
 }
