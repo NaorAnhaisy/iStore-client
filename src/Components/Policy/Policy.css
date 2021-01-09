@@ -1,6 +1,5 @@
 .policy-page {
     padding: 30px;
-    padding-top: 130px;
     background: #fff;
     color: #353535;
 }
@@ -20,14 +19,14 @@
 }
 
 .policy-content-header {
-    text-align: right;
+    text-align: left;
     padding-right: 15px;
     margin-bottom: 20px;
     font-size: 2.8rem;
 }
 
 .policy-content {
-    text-align: right;
+    text-align: left;
     margin-bottom: 30px;
     font-size: 1.1rem;
 }

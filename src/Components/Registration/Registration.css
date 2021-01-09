@@ -583,3 +583,9 @@ input[type="checkbox"]:checked+.regist-checkbox-label .regist-checkbox-span:befo
 input[type="checkbox"]:checked+.regist-checkbox-label:hover .regist-checkbox-span {
     background-color: rgb(147, 209, 224);
 }
+
+.agree-to-policy-div {
+    border: 1px solid #f3f3f3;
+    border-radius: 20px;
+    padding: 5px;
+}

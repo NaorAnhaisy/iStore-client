@@ -1,0 +1,46 @@
+.open-home-page-background-image {
+    background: url("../../assets/img/home-background-2.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    min-height: 500px;
+    display: block;
+}
+
+.open-home-page-header {
+    margin-top: 15vh;
+    font-size: 140px;
+    color: #2876f3f2;
+}
+
+.open-home-page-start-button {
+    font-size: 17px;
+    color: rgb(255, 255, 255);
+    background: #2876f3b0;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 30px 30px;
+    display: inline-block;
+    border-radius: 50px;
+    font-weight: 100;
+    border: none;
+}
+
+.open-home-page-start-button:hover {
+    background-image: none;
+    background: #6fa6ffd2;
+    color: rgb(255, 255, 255);
+}
+
+@media (max-width:550px) {
+    .open-home-page-header {
+        margin-top: 10vh;
+        font-size: 80px;
+    }
+    
+    .open-home-page-start-button {
+        font-size: 12px;
+        padding: 20px 20px;
+    }
+}

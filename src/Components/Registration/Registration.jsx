@@ -83,11 +83,11 @@ export default function Registration(props) {
                                         <div className="form-element-bar"></div>
                                         <label className="form-element-label"><i className="fas fa-user-check login-icon"></i>Repeat your password</label>
                                     </div>
-                                    <div>
+                                    <div className="agree-to-policy-div">
                                         <input type="checkbox" id="isChecked" value="" name="isChecked" checked={isAgreeToStatementsChecked} onChange={() => setAgreeToStatementsChecked(!isAgreeToStatementsChecked)} />
                                         <label className="regist-checkbox-label" htmlFor="isChecked">
                                             <span>
-                                                I agree all statements i <a href={clientUrl + "/Policy"} target="_blank" rel="noopener noreferrer">Terms of service</a> of <strong>iStore</strong>
+                                                I agree all statements in <a href={clientUrl + "/Policy"} target="_blank" rel="noopener noreferrer">Terms of service</a> of <strong>iStore</strong>
                                             </span>
                                             <span className="regist-checkbox-span"></span>
                                         </label>
