@@ -37,11 +37,11 @@ function App() {
       <Switch>
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path={"/"} component={Home} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/scrollTo/:scrollDiv" component={Home} />
-        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/register" component={Registration} />
-        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/login" component={Login} />
-        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/login/forgot" component={ForgotPass} />
-        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/reset/:token" component={ResetPass} />
-        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/policy" component={Policy} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Register" component={Registration} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Login" component={Login} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Login/Forgot" component={ForgotPass} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Reset/:token" component={ResetPass} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Policy" component={Policy} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Dashboard" component={Dashboard} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/StoreProducts" component={StoreProducts} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/StoreOrders" component={StoreOrders} />

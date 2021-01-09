@@ -1,130 +1,91 @@
-import React, { Component } from 'react'
-// import { Form, Button, InputGroup, Container } from 'react-bootstrap';
-import './Login.css'
-import AuthService from '../../Auth/AuthService'
-// import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import './Login.css';
+import { Link } from "react-router-dom";
+import { clientUrl } from '../../globals';
+// import AuthService from '../../Auth/AuthService';
+// import axios from 'axios';
 
-class Login extends Component {
+export default function Login(props) {
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    // const [message, setMessage] = useState(null);
+    // const [succeed, setSucced] = useState(false);
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            Email: "",
-            Password: "",
-
-            passwordType: 'password',
-            iconUrl: 'noSeePass',
-
-            msg: "",
-            isSucced: false,
-
-            loading: false
-        };
-
-        this.handleUserInput = this.handleUserInput.bind(this);
-        this.tooglePassType = this.tooglePassType.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentDidMount() {
-        window.scrollTo(0, 0);
-    }
-
-    handleUserInput(e) {
-        const name = e.target.name;
-        const value = e.target.value.trim();
-        this.setState({ [name]: value });
-    }
-
-    tooglePassType() {
-        let newType = this.state.passwordType === 'text' ? { type: 'password', iconUrl: 'noSeePass' } : { type: 'text', iconUrl: 'seePass' }
-        this.setState({ passwordType: newType.type, iconUrl: newType.iconUrl });
-    }
-
-    disableSubmit() {
-        return this.state.Email === "" ||
-            this.state.Password === "";
-    }
-
-    handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        const userToLog = {
-            "Email": this.state.Email,
-            "Password": this.state.Password
+        const userData = {
+            "email": email,
+            "password": password
         }
 
-        this.setState({ loading: true })
-        AuthService.login(userToLog)
-            .then(() => {
-                this.setState({ loading: false })
-                this.props.history.push("/mycards");
-                window.location.reload();
-            },
-                error => {
-                    const resMessage =
-                        (error.response &&
-                            error.response.data &&
-                            error.response.data.message) ||
-                        error.message ||
-                        error.toString();
+        console.log(userData)
 
-                    this.setState({
-                        loading: false,
-                        msg: resMessage,
-                        isSucced: false
-                    });
-                }
-            );
+        // try {
+        //     axios.post(serverApiUrl + "/visitCards/contactOwnerFromUser", messageToSend)
+        //         .then(response => {
+        //             setSucced(true);
+        //             handleResult(response.data.message);
+        //         })
+        //         .catch(err => {
+        //             const resMessage =
+        //                 (err.response &&
+        //                     err.response.data &&
+        //                     err.response.data.message) ||
+        //                 err.message ||
+        //                 err.toString();
+
+        //             console.error(resMessage);
+        //             handleResult(resMessage);
+        //         });
+        // } catch (error) {
+        //     console.error(error);
+        //     handleResult(error);
+        // }
     }
 
-    render() {
-        return (
-            <div class="account-forms-main">
-                <section class="sign-in">
-                    <div class="container account-forms-container">
-                        <div class="signin-content">
-                            <div class="signin-image">
-                                <figure><img src="/images/signin-image.jpg" alt="sing up" /></figure>
-                                <a href="localhost:3000" class="signup-image-link">Create an account</a>
-                            </div>
+    return (
+        <div className="account-forms-main">
+            <section>
+                <div className="container account-forms-container">
+                    <div className="signup-content">
 
-                            <div class="signin-form">
-                                <h2 class="form-title">Sign up</h2>
-                                <form method="POST" class="register-form" id="login-form">
-                                    <div class="form-group">
-                                        <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                        <input type="text" name="your_name" id="your_name" placeholder="Your Name" />
+                        <div className="signup-form">
+                            <h2 className="form-title">Sign In</h2>
+                            <form id="contact-card-owner-form" onSubmit={handleSubmit}>
+                                <fieldset>
+                                    <div className="form-element form-input">
+                                        <input className="form-element-field" placeholder=" " type="email" onChange={e => setEmail(e.target.value)} required />
+                                        <div className="form-element-bar"></div>
+                                        <label className="form-element-label"><i className="fas fa-at login-icon"></i>Your Email</label>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                        <input type="password" name="your_pass" id="your_pass" placeholder="Password" />
+                                    <div className="form-element form-input">
+                                        <input className="form-element-field" placeholder=" " type="password" onChange={e => setPassword(e.target.value)} required />
+                                        <div className="form-element-bar"></div>
+                                        <label className="form-element-label"><i className="fas fa-lock login-icon"></i>Password</label>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                        <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                                    </div>
-                                    <div class="form-group form-button">
-                                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
-                                    </div>
-                                </form>
-                                <div class="social-login">
-                                    <span class="social-label">Or login with</span>
-                                    <ul class="socials">
-                                        <li><a href="localhost:3000"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                                        <li><a href="localhost:3000"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                                        <li><a href="localhost:3000"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                                    </ul>
+                                </fieldset>
+                                <div className="form-actions">
+                                    <button className="form-btn" type="submit">Login</button>
                                 </div>
+                            </form>
+                            <div className="social-login">
+                                <span className="social-label">Or login with</span>
+                                <ul className="socials">
+                                    <li><a href={clientUrl}><i className="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                    <li><a href={clientUrl}><i className="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                    <li><a href={clientUrl}><i className="display-flex-center zmdi zmdi-google"></i></a></li>
+                                </ul>
                             </div>
                         </div>
+                        <div className="signup-image">
+                            <figure><img src="/images/signin-image.png" alt="sing up" /></figure>
+                            <span className="signup-image-link">Don't have an account yet? <Link to="/Register" className="link-to-registration">Create one here!</Link></span>
+                        </div>
+
                     </div>
-                </section>
-
-            </div>
-        )
-    }
+                </div>
+            </section>
+        </div>
+    )
 }
-
-export default Login;
