@@ -12,12 +12,6 @@
     margin: 0;
 }
 
-.account-forms-main p {
-    margin-bottom: 0px;
-    font-size: 15px;
-    color: #777;
-}
-
 .account-forms-main h2 {
     line-height: 1.66;
     margin: 0;
@@ -216,9 +210,10 @@
 }
 
 .form-btn, .form-btn-error {
-    background: transparent;
+    background: #337ab7;
     font-size: 1rem;
     color: #fff;
+    width: 100%;
     cursor: pointer;
     border: 1px solid transparent;
     padding: 5px 24px;
@@ -227,6 +222,13 @@
     z-index: 0;
     transition: transform 0.28s ease;
     will-change: transform;
+}
+
+.form-btn:disabled, .form-btn[disabled] {
+    background: #e2e2e2;
+    color: #505050;
+    opacity: .8;
+    cursor: default;
 }
 
 .form-btn::before, .form-btn::after, .form-btn-error::before, .form-btn-error::after {
@@ -239,11 +241,10 @@
 }
 
 .form-btn::before, .form-btn-error::before {
-    background: #337ab7;
     z-index: -2;
 }
 
-.form-btn::after, .form-btn-error::after {
+.form-btn:not([disabled]) ::after, .form-btn-error:not([disabled])::after {
     background: #000;
     z-index: -1;
     opacity: 0;
@@ -265,6 +266,11 @@
 
 .form-btn-error::before {
     background: #d9534f;
+}
+
+.form-btn-white {
+    background: #ebebeb;
+    color: black;
 }
 
 .form-btn-block {
@@ -484,12 +490,22 @@ select.form-element-field {
     margin: 0;
 }
 
-.contact-card-owner-msg-succes {
+.succes-msg {
     color: #259337;
 }
 
-.contact-card-owner-msg-fail {
+.succes-msg-background {
+    background: honeydew;
+    padding: 5px;
+}
+
+.error-msg {
     color: #d9534f;
+}
+
+.error-msg-background {
+    background: #ffeae9;;
+    padding: 5px;
 }
 
 .login-icon {

@@ -82,7 +82,7 @@ export default function MainNavbar() {
 
             <div className="overlay"></div>
             <div className="content">
-                <button className="btn btn-primary btn-customized open-menu">
+                <button className="btn open-menu">
                     <i className="fas fa-align-left"></i> <span>Menu</span>
                 </button>
             </div>

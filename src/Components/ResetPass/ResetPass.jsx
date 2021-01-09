@@ -1,215 +1,168 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ResetPass.css";
-import { Form, Button, Container, InputGroup, Col } from 'react-bootstrap';
-import AuthService from '../../Auth/AuthService'
-import { Link } from 'react-router-dom';
+// import { Form, Button, Container, InputGroup, Col } from 'react-bootstrap';
+// import AuthService from '../../Auth/AuthService'
+// import { Link } from 'react-router-dom';
 
-class ResetPass extends React.Component {
+export default function ResetPass(props) {
 
-    constructor(props) {
-        super(props);
+    const [password, setPassword] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("");
 
-        this.state = {
-            user: null,
-            Password: "",
-            SubmitPassword: "",
-            passwordValid: false,
-            submitPasswordValid: true,
-            msg: "",
-            isSucced: false,
-            loading: false
-        };
+    // constructor(props) {
+    //     super(props);
 
-        this.handleUserInput = this.handleUserInput.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    //     this.state = {
+    //         user: null,
+    //         Password: "",
+    //         SubmitPassword: "",
+    //         passwordValid: false,
+    //         submitPasswordValid: true,
+    //         msg: "",
+    //         isSucced: false,
+    //         loading: false
+    //     };
 
-    componentDidMount() {
-        const token = this.props.match.params.token;
-        AuthService.resetPasswordGet(token)
-            .then((response) => {
-                this.setState({ loading: false, isSucced: true, user: response.data.message });
-            },
-                error => {
-                    const resMessage =
-                        (error.response &&
-                            error.response.data &&
-                            error.response.data.message) ||
-                        error.message ||
-                        error.toString();
+    //     this.handleUserInput = this.handleUserInput.bind(this);
+    //     this.handleSubmit = this.handleSubmit.bind(this);
+    // }
 
-                    this.setState({
-                        loading: false,
-                        msg: resMessage,
-                        isSucced: false
-                    });
-                }
-            );
-    }
+    // componentDidMount() {
+    //     const token = this.props.match.params.token;
+    //     AuthService.resetPasswordGet(token)
+    //         .then((response) => {
+    //             this.setState({ loading: false, isSucced: true, user: response.data.message });
+    //         },
+    //             error => {
+    //                 const resMessage =
+    //                     (error.response &&
+    //                         error.response.data &&
+    //                         error.response.data.message) ||
+    //                     error.message ||
+    //                     error.toString();
 
-    validateField(fieldName, value) {
-        let passwordValid = this.state.passwordValid;
-        let submitPasswordValid = this.state.submitPasswordValid;
+    //                 this.setState({
+    //                     loading: false,
+    //                     msg: resMessage,
+    //                     isSucced: false
+    //                 });
+    //             }
+    //         );
+    // }
 
-        switch (fieldName) {
-            case 'Password':
-                passwordValid = value.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/);
-                submitPasswordValid = value === this.state.SubmitPassword;
-                break;
-            case 'SubmitPassword':
-                submitPasswordValid = value === this.state.Password;
-                break;
-            default:
-                break;
-        }
+    // validateField(fieldName, value) {
+    //     let passwordValid = this.state.passwordValid;
+    //     let submitPasswordValid = this.state.submitPasswordValid;
 
-        this.setState({
-            passwordValid: passwordValid,
-            submitPasswordValid: submitPasswordValid
-        }, this.validateForm);
-    }
+    //     switch (fieldName) {
+    //         case 'Password':
+    //             passwordValid = value.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/);
+    //             submitPasswordValid = value === this.state.SubmitPassword;
+    //             break;
+    //         case 'SubmitPassword':
+    //             submitPasswordValid = value === this.state.Password;
+    //             break;
+    //         default:
+    //             break;
+    //     }
 
-    validateForm() {
-        this.setState({
-            formValid: this.state.passwordValid &&
-                this.state.submitPasswordValid
-        });
-    }
+    //     this.setState({
+    //         passwordValid: passwordValid,
+    //         submitPasswordValid: submitPasswordValid
+    //     }, this.validateForm);
+    // }
 
-    handleUserInput(e) {
-        const name = e.target.name;
-        const value = e.target.value.trim();
-        this.setState({ [name]: value },
-            () => { this.validateField(name, value) });
-    }
+    // validateForm() {
+    //     this.setState({
+    //         formValid: this.state.passwordValid &&
+    //             this.state.submitPasswordValid
+    //     });
+    // }
 
-    handleRequiredControlClsName(name, nameValid) {
-        return (name !== "") ?
-            (nameValid) ?
-                "is-valid-form-control"
-                : "not-valid-form-control"
-            : null
-    }
+    // handleUserInput(e) {
+    //     const name = e.target.name;
+    //     const value = e.target.value.trim();
+    //     this.setState({ [name]: value },
+    //         () => { this.validateField(name, value) });
+    // }
 
-    handleSubmit(e) {
+    // handleRequiredControlClsName(name, nameValid) {
+    //     return (name !== "") ?
+    //         (nameValid) ?
+    //             "is-valid-form-control"
+    //             : "not-valid-form-control"
+    //         : null
+    // }
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({ loading: true })
-        let token = this.props.match.params.token;
-        let passwordsObj = {
-            Password: this.state.Password,
-            ConfirmPassword: this.state.SubmitPassword
+
+        const userData = {
+            "password": password,
+            "repeatPassword": repeatPassword
         }
 
-        AuthService.resetPasswordPost(token, passwordsObj)
-            .then((response) => {
-                this.setState({ loading: false, isSucced: true, msg: response.data.message });
-            },
-                error => {
-                    const resMessage =
-                        (error.response &&
-                            error.response.data &&
-                            error.response.data.message) ||
-                        error.message ||
-                        error.toString();
+        console.log(userData)
+        //     this.setState({ loading: true })
+        //     let token = this.props.match.params.token;
+        //     let passwordsObj = {
+        //         Password: this.state.Password,
+        //         ConfirmPassword: this.state.SubmitPassword
+        //     }
 
-                    this.setState({
-                        loading: false,
-                        msg: resMessage,
-                        isSucced: false
-                    });
-                }
-            );
+        //     AuthService.resetPasswordPost(token, passwordsObj)
+        //         .then((response) => {
+        //             this.setState({ loading: false, isSucced: true, msg: response.data.message });
+        //         },
+        //             error => {
+        //                 const resMessage =
+        //                     (error.response &&
+        //                         error.response.data &&
+        //                         error.response.data.message) ||
+        //                     error.message ||
+        //                     error.toString();
+
+        //                 this.setState({
+        //                     loading: false,
+        //                     msg: resMessage,
+        //                     isSucced: false
+        //                 });
+        //             }
+        //         );
     }
 
-    render() {
-        return (
-            <Container className="reset-pass-div">
-                <h2 className="authonticate-page-header">איפוס סיסמא</h2>
-                {
-                    !this.state.user ?
-                        <div className={'register-msg forgot-password-msg ' + (this.state.isSucced ? "success-msg" : "error-msg")}>
-                            {this.state.msg}
-                        </div> :
+    return (
+        <div className="account-forms-main">
+            <section>
+                <div className="container account-forms-container">
+                    <div className="signup-content">
 
-                        <div>
-                            <h5 className="reset-password-email">איפוס סיסמא ל: {this.state.user.Email}</h5>
-                            {
-                                this.state.msg ?
-                                    <div>
-                                        <div className={'register-msg forgot-password-msg ' + (this.state.isSucced ? "success-msg" : "error-msg")}>
-                                            {this.state.msg}
-                                        </div>
-                                        {this.state.isSucced && <Link className="reset-password-login-link" to="/login">התחבר »</Link>}
-                                    </div> :
+                        <div className="forgot-pass-form container-xxl">
+                            <h2 className="form-title">Reset Password</h2>
+                            <h5>Awesome. Now just give yourself a new password.</h5>
+                            <h6>Remember to remember it this time <i className="far fa-smile-wink"></i></h6>
 
-                                    <Col xs={12} md={6} lg={4} className="forgot-password-form">
-                                        <Form onSubmit={this.handleSubmit}>
-
-                                            <Form.Group>
-                                                <Form.Label>
-                                                    בחר סיסמא חדשה:
-                                            </Form.Label>
-                                                <InputGroup>
-                                                    <Form.Control
-                                                        className={"attached-icon-form " + this.handleRequiredControlClsName
-                                                            (this.state.Password, this.state.passwordValid)
-                                                        }
-                                                        type="password"
-                                                        name="Password"
-                                                        onChange={(event) => this.handleUserInput(event)}
-                                                        placeholder="סיסמא" />
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text id="inputGroupPrepend">
-                                                            <img src="/images/locker.png" alt="lock" className="attached-image-form" />
-                                                        </InputGroup.Text>
-                                                    </InputGroup.Prepend>
-                                                </InputGroup>
-                                                {!this.state.passwordValid && this.state.Password !== '' &&
-                                                    <span className="error">
-                                                        סיסמא לא תקינה
-                                                    </span>
-                                                }
-                                                <span className="note">
-                                                    <br />
-                                                    סיסמא צריכה להכיל 6 תווים לפחות, הכוללת מספרים, אותיות גדולות וקטנות באנגלית בלבד.
-                                                </span>
-                                            </Form.Group>
-
-                                            <Form.Group>
-                                                <Form.Label>
-                                                    חזור שנית על הסיסמא:
-                                        </Form.Label>
-                                                <InputGroup>
-                                                    <Form.Control
-                                                        type="password"
-                                                        name="SubmitPassword"
-                                                        className="attached-icon-form"
-                                                        onChange={(event) => this.handleUserInput(event)}
-                                                        placeholder="אמת סיסמא" />
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text id="inputGroupPrepend">
-                                                            <img src="/images/verifyPassword.png" alt="verifyPass" className="attached-image-form" />
-                                                        </InputGroup.Text>
-                                                    </InputGroup.Prepend>
-                                                </InputGroup>
-                                                {!this.state.submitPasswordValid &&
-                                                    <span className="error">
-                                                        הסיסמאות לא תואמות
-                                            </span>
-                                                }
-                                            </Form.Group>
-
-                                            <Button className="register-button" variant="primary" type="submit" disabled={!this.state.formValid}>
-                                                עדכן את הסיסמא
-                                        </Button>
-                                        </Form>
-                                    </Col>
-                            }
+                            <form id="contact-card-owner-form" onSubmit={handleSubmit}>
+                                <fieldset>
+                                    <div className="form-element form-input">
+                                        <input className="form-element-field" placeholder=" " type="password" onChange={e => setPassword(e.target.value)} required />
+                                        <div className="form-element-bar"></div>
+                                        <label className="form-element-label"><i className="fas fa-at login-icon"></i>New Password</label>
+                                    </div>
+                                    <div className="form-element form-input">
+                                        <input className="form-element-field" placeholder=" " type="password" onChange={e => setRepeatPassword(e.target.value)} required />
+                                        <div className="form-element-bar"></div>
+                                        <label className="form-element-label"><i className="fas fa-at login-icon"></i>And repeat that password ...</label>
+                                    </div>
+                                </fieldset>
+                                <div className="form-actions">
+                                    <button disabled className="form-btn" type="submit"><i className="fas fa-check-double reset-password-check-icon"></i>Good to Go!</button>
+                                </div>
+                            </form>
                         </div>
-                }
-            </Container>
-        )
-    }
+                    </div>
+                </div>
+            </section>
+        </div>
+    )
 }
-
-export default ResetPass;
