@@ -81,6 +81,7 @@ export default function Login(props) {
                         <div className="signup-image">
                             <figure><img src="/images/signin-image.png" alt="sing up" /></figure>
                             <span className="signup-image-link">Don't have an account yet? <Link to="/Register" className="link-to-registration">Sign Up</Link></span>
+                            <span className="signup-image-link"><Link to="/Login/Forgot" className="link-to-registration">Forgot your password?</Link></span>
                         </div>
 
                     </div>

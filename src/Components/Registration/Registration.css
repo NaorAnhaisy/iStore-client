@@ -530,7 +530,7 @@ select.form-element-field {
     position: absolute;
     transform: rotate(45deg);
     top: 10px;
-    left: 7.3px;
+    left: 6.6px;
     transition: width 50ms ease 50ms;
     transform-origin: 0% 0%;
 }

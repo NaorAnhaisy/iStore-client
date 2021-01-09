@@ -12,6 +12,17 @@
     margin-top: 15vh;
     font-size: 140px;
     color: #2876f3f2;
+    font-family: Vegan;
+    animation: 1.5s forwards animateOpenHomeHeaderOpacity;
+}
+
+@keyframes animateOpenHomeHeaderOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .open-home-page-start-button {
@@ -25,6 +36,7 @@
     border-radius: 50px;
     font-weight: 100;
     border: none;
+    margin-top: 30px;
 }
 
 .open-home-page-start-button:hover {

@@ -1,25 +1,3 @@
-.forgot-pass-div {
-  padding-top: 100px;
-}
-
-.forgot-password-form {
+.forgot-pass-form {
   margin: auto;
-  display: inline;
-  text-align: right;
-  margin-top: 2rem;
-}
-
-.forgot-password-msg {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-}
-
-.forgot-password-back-btn {
-  float: left;
-  background-color: #384450;
-}
-
-.forgot-password-btn-div > .btn {
-  border-radius: 5px;
 }

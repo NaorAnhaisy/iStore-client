@@ -68,8 +68,8 @@ export default function MainNavbar() {
                 <div className="dismiss">
                     <i className="fas fa-arrow-left"></i>
                 </div>
-                <div className="logo">
-                    <h3>
+                <div className="navbar-brand-logo">
+                    <h3 className="navbar-brand">
                         <Link to="/" className="close-navbar-onClick">iStore</Link>
                     </h3>
                 </div>

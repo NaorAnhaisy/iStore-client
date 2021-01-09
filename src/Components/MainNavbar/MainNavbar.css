@@ -105,13 +105,13 @@ a.btn-customized:hover, a.btn-customized:active, a.btn-customized:focus, a.btn-c
   color: #fff;
 }
 
-.sidebar .logo {
+.sidebar .navbar-brand-logo {
   padding: 40px 20px;
   border-bottom: 1px solid #444;
   transition: all 0.3s;
 }
 
-.sidebar .logo a {
+.sidebar .navbar-brand-logo a {
   display: inline-block;
   width: 172px;
   height: 34px;
@@ -216,12 +216,12 @@ a.btn-customized-4.btn-customized-light:hover, a.btn-customized-4.btn-customized
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-  .sidebar .logo a {
+  .sidebar .navbar-brand-logo a {
     background-image: url(../../assets/img/logo@2x.png) !important;
     background-repeat: no-repeat !important;
     background-size: 172px 34px !important;
   }
-  .sidebar.light .logo a {
+  .sidebar.light .navbar-brand-logo a {
     background-image: url(../../assets/img/logo-dark@2x.png) !important;
   }
 }

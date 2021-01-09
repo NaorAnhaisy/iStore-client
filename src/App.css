@@ -226,13 +226,9 @@ code {
 }
 
 @font-face {
-  font-family: 'Vegan';
-  font-style: normal;
-  font-weight: 600;
-  src: url("./assets/fonts/veganStyle/Vegan-Style-Personal.ttf");
-  /* IE9 Compat Modes */
-  src: local("Vegan Medium"), local("Vegan-Medium"), url("./assets/fonts/poppins/poppins-v5-latin-italic.ttf") format("truetype");
-  /* Legacy iOS */
+  font-family: Vegan;
+  src: url(./assets/fonts/veganStyle/Vegan-Style-Personal.ttf) format('truetype');
+  font-display: swap;
 }
 
 html {

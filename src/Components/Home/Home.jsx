@@ -22,7 +22,7 @@ export default function Home(props) {
                     <input type='button' className='btn open-home-page-start-button' value='Start building your next online store'/>
                 </Container>
             </div>
-            <Container className="p-3 open-home-page-content">
+            <Container className="mt-5">
                 <h1>iStore</h1>
                 <div>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fringilla phasellus faucibus scelerisque eleifend. Sed felis eget velit aliquet sagittis id. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Nunc id cursus metus aliquam. Pulvinar neque laoreet suspendisse interdum consectetur libero id. Cursus turpis massa tincidunt dui ut ornare lectus. Feugiat in ante metus dictum. Felis eget nunc lobortis mattis aliquam faucibus purus in. Ullamcorper velit sed ullamcorper morbi tincidunt. Tellus in hac habitasse platea dictumst. Tellus cras adipiscing enim eu turpis egestas pretium. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed.
