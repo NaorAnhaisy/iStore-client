@@ -11,18 +11,28 @@ import Policy from './Components/Policy/Policy'
 import ForgotPass from './Components/ForgotPass/ForgotPass'
 import ResetPass from './Components/ResetPass/ResetPass'
 import BadUrl from './Components/BadUrl/BadUrl'
+import Dashboard from './Components/Dashboard/Dashboard'
+import StoreProducts from './Components/StoreProducts/StoreProducts'
+import StoreOrders from './Components/StoreOrders/StoreOrders'
+import Settings from './Components/Settings/Settings'
+import ContactUs from './Components/ContactUs/ContactUs'
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path={["/", "/contactSent"]} component={Home} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path={"/"} component={Home} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/scrollTo/:scrollDiv" component={Home} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/register" component={Registration} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/login" component={Login} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/login/forgot" component={ForgotPass} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/reset/:token" component={ResetPass} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/policy" component={Policy} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Dashboard" component={Dashboard} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/StoreProducts" component={StoreProducts} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/StoreOrders" component={StoreOrders} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Settings" component={Settings} />
+        <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/ContactUs" component={ContactUs} />
         <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} path="*" component={BadUrl} />
       </Switch>
       {/* <header className="App-header">

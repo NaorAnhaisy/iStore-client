@@ -56,14 +56,7 @@
   box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.2);
 }
 
-.open-menu.btn-customized,
-.open-menu.btn-customized:hover,
-.open-menu.btn-customized:active,
-.open-menu.btn-customized:focus,
-.open-menu.btn-customized:active:focus,
-.open-menu.btn-customized.active:focus,
-.open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active,
-.open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+.open-menu.btn-customized, .open-menu.btn-customized:hover, .open-menu.btn-customized:active, .open-menu.btn-customized:focus, .open-menu.btn-customized:active:focus, .open-menu.btn-customized.active:focus, .open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active, .open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
   box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.2);
 }
 
@@ -82,15 +75,10 @@ a.btn-customized {
   box-shadow: none;
 }
 
-a.btn-customized:hover,
-a.btn-customized:active,
-a.btn-customized:focus,
-a.btn-customized:active:focus,
-a.btn-customized.active:focus,
-a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active,
-a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+a.btn-customized:hover, a.btn-customized:active, a.btn-customized:focus, a.btn-customized:active:focus, a.btn-customized.active:focus, a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active, a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
   outline: 0;
-  background: #cd533d; /* for browsers that don't recognize rgba */
+  background: #cd533d;
+  /* for browsers that don't recognize rgba */
   background: rgba(243, 91, 63, 0.7);
   border: 0;
   color: #fff;
@@ -111,8 +99,7 @@ a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
   cursor: pointer;
 }
 
-.dismiss:hover,
-.dismiss:focus {
+.dismiss:hover, .dismiss:focus {
   background: #555;
   color: #fff;
 }
@@ -145,10 +132,7 @@ a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
   color: #fff;
 }
 
-.sidebar ul li a:hover,
-.sidebar ul li a:focus,
-.sidebar ul li.active > a:hover,
-.sidebar ul li.active > a:focus {
+.sidebar ul li a:hover, .sidebar ul li a:focus, .sidebar ul li.active>a:hover, .sidebar ul li.active>a:focus {
   outline: 0;
   background: #555;
   color: #fff;
@@ -158,8 +142,7 @@ a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
   margin-right: 5px;
 }
 
-.sidebar ul li.active > a,
-a[aria-expanded="true"] {
+.sidebar ul li.active>a, a[aria-expanded="true"] {
   background: #444;
   color: #fff;
 }
@@ -170,7 +153,7 @@ a[aria-expanded="true"] {
   font-size: 14px;
 }
 
-.sidebar ul ul li.active > a {
+.sidebar ul ul li.active>a {
   background: #555;
 }
 
@@ -215,13 +198,7 @@ a.btn-customized-4.btn-customized-light {
   background: #fff;
 }
 
-a.btn-customized-4.btn-customized-dark:hover,
-a.btn-customized-4.btn-customized-dark:active,
-a.btn-customized-4.btn-customized-dark:focus,
-a.btn-customized-4.btn-customized-dark:active:focus,
-a.btn-customized-4.btn-customized-dark.active:focus,
-a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active,
-a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+a.btn-customized-4.btn-customized-dark:hover, a.btn-customized-4.btn-customized-dark:active, a.btn-customized-4.btn-customized-dark:focus, a.btn-customized-4.btn-customized-dark:active:focus, a.btn-customized-4.btn-customized-dark.active:focus, a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active, a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
   outline: 0;
   background: #555;
   border: 0;
@@ -229,13 +206,7 @@ a.btn-customized-4.btn-customized-dark.btn.btn-primary:not(:disabled):not(.disab
   box-shadow: none;
 }
 
-a.btn-customized-4.btn-customized-light:hover,
-a.btn-customized-4.btn-customized-light:active,
-a.btn-customized-4.btn-customized-light:focus,
-a.btn-customized-4.btn-customized-light:active:focus,
-a.btn-customized-4.btn-customized-light.active:focus,
-a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active,
-a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
+a.btn-customized-4.btn-customized-light:hover, a.btn-customized-4.btn-customized-light:active, a.btn-customized-4.btn-customized-light:focus, a.btn-customized-4.btn-customized-light:active:focus, a.btn-customized-4.btn-customized-light.active:focus, a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active, a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
   outline: 0;
   background: #555;
   border: 0;
@@ -243,19 +214,13 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
   box-shadow: none;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2),
-  only screen and (min--moz-device-pixel-ratio: 2),
-  only screen and (-o-min-device-pixel-ratio: 2/1),
-  only screen and (min-device-pixel-ratio: 2),
-  only screen and (min-resolution: 192dpi),
-  only screen and (min-resolution: 2dppx) {
-    .sidebar .logo a {
-      background-image: url(../../assets/img/logo@2x.png) !important;
-      background-repeat: no-repeat !important;
-      background-size: 172px 34px !important;
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .sidebar .logo a {
+    background-image: url(../../assets/img/logo@2x.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 172px 34px !important;
   }
-
   .sidebar.light .logo a {
-      background-image: url(../../assets/img/logo-dark@2x.png) !important;
+    background-image: url(../../assets/img/logo-dark@2x.png) !important;
   }
 }

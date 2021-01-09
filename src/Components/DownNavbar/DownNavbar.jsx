@@ -14,7 +14,7 @@ class DownNavbar extends Component {
                             <tbody>
                                 <tr>
                                     <td style={{ width: "50%" }} className="copyright-span">
-                                        Website developed by <a className="developer-name" href="https://github.com/NaorAnhaisy">Naor Anhaisy</a>
+                                        This website developed by <a className="developer-name" href="https://github.com/NaorAnhaisy">Naor Anhaisy</a>
                                     </td>
                                     <td style={{ width: "50%" }} className="about-site">
                                         Bucard © {new Date().getFullYear()} - All Rights Reserve.
