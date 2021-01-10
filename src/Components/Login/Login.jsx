@@ -49,7 +49,11 @@ export default function Login(props) {
             <section>
                 <div className="container account-forms-container">
                     <div className="signup-content">
-
+                        <div className="signup-image">
+                            <figure className="form-account-image"><img src="/images/signin-image.png" alt="sing up" /></figure>
+                            <span className="signup-image-link">Don't have an account yet? <Link to="/Register" className="link-to-registration">Sign Up</Link></span>
+                            <span className="signup-image-link"><Link to="/Login/Forgot" className="link-to-registration">Forgot your password?</Link></span>
+                        </div>
                         <div className="signup-form">
                             <h2 className="form-title">Sign In</h2>
                             <form id="contact-card-owner-form" onSubmit={handleSubmit}>
@@ -57,12 +61,12 @@ export default function Login(props) {
                                     <div className="form-element form-input">
                                         <input className="form-element-field" placeholder=" " type="email" onChange={e => setEmail(e.target.value)} required />
                                         <div className="form-element-bar"></div>
-                                        <label className="form-element-label"><i className="fas fa-at login-icon"></i>Your Email</label>
+                                        <label className="form-element-label"><i className="fas fa-at form-account-icon"></i>Your Email</label>
                                     </div>
                                     <div className="form-element form-input">
                                         <input className="form-element-field" placeholder=" " type="password" onChange={e => setPassword(e.target.value)} required />
                                         <div className="form-element-bar"></div>
-                                        <label className="form-element-label"><i className="fas fa-lock login-icon"></i>Password</label>
+                                        <label className="form-element-label"><i className="fas fa-lock form-account-icon"></i>Password</label>
                                     </div>
                                 </fieldset>
                                 <div className="form-actions">
@@ -78,12 +82,6 @@ export default function Login(props) {
                                 </ul>
                             </div>
                         </div>
-                        <div className="signup-image">
-                            <figure><img src="/images/signin-image.png" alt="sing up" /></figure>
-                            <span className="signup-image-link">Don't have an account yet? <Link to="/Register" className="link-to-registration">Sign Up</Link></span>
-                            <span className="signup-image-link"><Link to="/Login/Forgot" className="link-to-registration">Forgot your password?</Link></span>
-                        </div>
-
                     </div>
                 </div>
             </section>

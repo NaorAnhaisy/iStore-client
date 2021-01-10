@@ -73,16 +73,16 @@ export default function ResetPass(props) {
                                         <div className="form-element form-input">
                                             <input className="form-element-field" placeholder=" " type="password" onChange={e => setPassword(e.target.value)} required />
                                             <div className="form-element-bar"></div>
-                                            <label className="form-element-label"><i className="fas fa-lock login-icon"></i>New Password</label>
+                                            <label className="form-element-label"><i className="fas fa-lock form-account-icon"></i>New Password</label>
                                         </div>
                                         <div className="form-element form-input">
                                             <input className="form-element-field" placeholder=" " type="password" onChange={e => setRepeatPassword(e.target.value)} required />
                                             <div className="form-element-bar"></div>
-                                            <label className="form-element-label"><i className="fas fa-user-check login-icon"></i>And repeat that password ...</label>
+                                            <label className="form-element-label"><i className="fas fa-user-check form-account-icon"></i>And repeat that password ...</label>
                                         </div>
                                     </fieldset>
                                     <div className="form-actions">
-                                        <button disabled className="form-btn" type="submit"><i className="fas fa-check-double reset-password-check-icon"></i>Good to Go!</button>
+                                        <button disabled className="form-btn" type="submit"><i className="fas fa-check-double reset-password-check-icon"></i>I'm Good to Go!</button>
                                     </div>
                                 </form>
                             </div>

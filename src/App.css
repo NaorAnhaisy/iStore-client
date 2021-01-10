@@ -242,6 +242,7 @@ html {
 
 .darkmode-toggle {
   outline: none !important;
+  z-index: 1000;
 }
 
 .undragablle-image {

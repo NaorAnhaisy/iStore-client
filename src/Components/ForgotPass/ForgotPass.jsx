@@ -12,7 +12,7 @@ export default function ForgotPass(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage("Check your mail inbox for a password reset link.")
-    setIsSucced(false);
+    setIsSucced(true);
 
     const userData = {
       "email": email
@@ -57,7 +57,7 @@ export default function ForgotPass(props) {
                     <div className="form-element form-input">
                       <input className="form-element-field" placeholder=" " type="email" onChange={e => setEmail(e.target.value)} required />
                       <div className="form-element-bar"></div>
-                      <label className="form-element-label"><i className="fas fa-at login-icon"></i>What's your Email ?</label>
+                      <label className="form-element-label"><i className="fas fa-at form-account-icon"></i>What's your Email ?</label>
                     </div>
                   </fieldset>
 
