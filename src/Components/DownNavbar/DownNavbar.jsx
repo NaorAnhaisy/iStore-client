@@ -17,7 +17,7 @@ class DownNavbar extends Component {
                                         This website developed by <a className="developer-name" href="https://github.com/NaorAnhaisy">Naor Anhaisy</a>
                                     </td>
                                     <td style={{ width: "50%" }} className="about-site">
-                                        Bucard © {new Date().getFullYear()} - All Rights Reserve.
+                                        iStore © {new Date().getFullYear()} - All Rights Reserve.
                                     </td>
                                 </tr>
                             </tbody>

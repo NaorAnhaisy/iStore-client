@@ -48,31 +48,32 @@ export default function ForgotPass(props) {
       <section>
         <div className="container account-forms-container">
           <div className="signup-content">
-            <div className="forgot-pass-form">
-              <h2 className="form-title">Forgot Your Password?</h2>
-              <h5>Don't worry, happands to the best of us. Let's Recover this quick.</h5>
-              <h6>Enter here your Email, and we'll send you a link to renew your password.</h6>
-              <form id="contact-card-owner-form" onSubmit={handleSubmit}>
-                <fieldset>
-                  <div className="form-element form-input">
-                    <input className="form-element-field" placeholder=" " type="email" onChange={e => setEmail(e.target.value)} required />
-                    <div className="form-element-bar"></div>
-                    <label className="form-element-label"><i className="fas fa-at login-icon"></i>What's your Email ?</label>
-                  </div>
-                </fieldset>
-                <Row>
-                  <Col xs={3}>
-                    <button className="form-btn form-btn-white" onClick={() => history.goBack()}><i className="far fa-arrow-alt-circle-left forgot-pass-btn-icons"></i> Back</button>
-                  </Col>
-                  <Col xs={9}>
-                    <button className="form-btn" type="submit"><i className="fas fa-envelope-open-text forgot-pass-btn-icons"></i> Send me password recover Email</button>
-                  </Col>
-                </Row>
-                {message &&
-                  <p className={"forgot-pass-msg " + (isSucced ? "succes-msg succes-msg-background" : "error-msg error-msg-background")}>{message}</p>
-                }
-              </form>
-            </div>
+              <div className="forgot-pass-form">
+                <h2 className="form-title">Forgot Your Password?</h2>
+                <h5>Don't worry, happands to the best of us. Let's Recover this quick.</h5>
+                <h6>Enter here your Email, and we'll send you a link to renew your password.</h6>
+                <form id="contact-card-owner-form" onSubmit={handleSubmit}>
+                  <fieldset>
+                    <div className="form-element form-input">
+                      <input className="form-element-field" placeholder=" " type="email" onChange={e => setEmail(e.target.value)} required />
+                      <div className="form-element-bar"></div>
+                      <label className="form-element-label"><i className="fas fa-at login-icon"></i>What's your Email ?</label>
+                    </div>
+                  </fieldset>
+
+                  <Row className="forgot-pass-btn-row">
+                    <Col xs={9}>
+                      <button type="submit" className="form-btn">Send me password recover Email <i className="fas fa-envelope-open-text forgot-pass-btn-icons"></i></button>
+                    </Col>
+                    <Col xs={3}>
+                      <button className="form-btn form-btn-white" onClick={() => history.goBack()}>Back <i className="far fa-arrow-alt-circle-left forgot-pass-btn-icons"></i></button>
+                    </Col>
+                  </Row>
+                  {message &&
+                    <p className={"forgot-pass-msg " + (isSucced ? "succes-msg succes-msg-background" : "error-msg error-msg-background")}>{message}</p>
+                  }
+                </form>
+              </div>
           </div>
         </div>
       </section>

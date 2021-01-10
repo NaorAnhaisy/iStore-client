@@ -22,7 +22,6 @@ export default function MainNavbar() {
 
     useEffect(() => {
         $('.dismiss, .overlay, .close-navbar-onClick').on('click', dismissNavbar);
-
         $('.open-menu').on('click', function (e) {
             e.preventDefault();
             handleActiveNavLink(window.location.href)
@@ -79,14 +78,12 @@ export default function MainNavbar() {
                     {createNavbarLiElements(secondNavLinksSection)}
                 </ul>
             </nav>
-
             <div className="overlay"></div>
             <div className="content">
                 <button className="btn open-menu">
                     <i className="fas fa-align-left"></i> <span>Menu</span>
                 </button>
             </div>
-
         </div>
     )
 }

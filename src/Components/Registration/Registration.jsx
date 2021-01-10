@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Registration.css';
 import { Link } from "react-router-dom";
 // import AuthService from '../../Auth/AuthService';
 // import axios from 'axios';
 import { clientUrl } from '../../globals';
+var validator = require("email-validator");
+var passwordValidator = require('password-validator');
+
+var schema = new passwordValidator();
+schema
+    .is().min(8)
+    .is().max(100)
+    .has().uppercase(1)
+    .has().lowercase(1)
+    .has().digits(1)
 
 export default function Registration(props) {
     const [fullName, setFullName] = useState(null);
@@ -11,8 +21,21 @@ export default function Registration(props) {
     const [password, setPassword] = useState(null);
     const [passwordRepeat, setPasswordRepeat] = useState(null);
     const [isAgreeToStatementsChecked, setAgreeToStatementsChecked] = useState(false);
+    const [isFieldsOK, setFieldsOK] = useState(false);
     // const [message, setMessage] = useState(null);
     // const [succeed, setSucced] = useState(false);
+
+    useEffect(() => {
+        if (checkFieldsOK()) {
+            setFieldsOK(true);
+        } else {
+            setFieldsOK(false);
+        }
+    }, [checkFieldsOK])
+
+    const checkFieldsOK = () => {
+        return (fullName && validator.validate(email) && schema.validate(password) && passwordRepeat === password && isAgreeToStatementsChecked);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
