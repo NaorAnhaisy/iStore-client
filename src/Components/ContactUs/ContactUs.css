@@ -1,0 +1,108 @@
+.contact-us-header {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: auto;
+}
+
+.contact-us-subtitle {
+  font-size: 20px;
+  color: #a0a0a0;
+}
+
+.contact-us-form-main {
+  padding: 10px 10px;
+  margin: 60px auto;
+}
+
+.contact-us-info-panel {
+  background: #3e2093;
+  margin: 0;
+  padding: 35px 20px;
+  border-radius: 10px;
+  color: white;
+  position: relative;
+}
+
+.contact-us-info-panel h4 {
+  text-align: left;
+}
+
+.contact-us-info-panel p {
+  color: #b7b7b7;
+  font-weight: 400;
+  text-align: left;
+  padding: 20px 0;
+}
+
+.contact-us-info-table {
+  margin: 25px 0;
+}
+
+.contact-us-info-table td {
+  text-align: left;
+  padding-bottom: 2em;
+}
+
+.contact-us-info-table td:first-child {
+  color: #ffbd6b;
+}
+
+.socials-contact-us {
+  position: absolute;
+  bottom: 20px;
+}
+
+.socials-contact-us .zmdi {
+  transition: all 0.4s;
+}
+
+.socials-contact-us .zmdi-facebook:hover {
+  background: #3b5998;
+}
+
+.socials-contact-us .zmdi-twitter:hover {
+  background: #1da0f2;
+}
+
+.socials-contact-us .zmdi-instagram:hover {
+  background: #c13584;
+}
+
+.socials-contact-us .zmdi-linkedin:hover {
+  background: #2867b2;
+}
+
+.contact-us-fieldset {
+  display: flex;
+}
+
+.contact-us-fieldset .form-element {
+  width: 50%;
+}
+
+.contact-us-2nd-fieldset .form-element {
+    margin-top: 15px;
+}
+
+.contact-us-form {
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+  .contact-us-form-container-width {
+    width: calc(100% - 30px);
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .contact-us-form-container-width {
+    max-width: 80%;
+  }
+}
+
+.contact-us-info-table a {
+  color: inherit;
+  text-decoration: inherit;
+}

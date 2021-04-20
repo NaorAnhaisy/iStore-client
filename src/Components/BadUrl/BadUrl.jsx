@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
-import './BadUrl.css'
+import React, { useEffect } from "react";
+import "./BadUrl.css";
 
-class BadUrl extends Component {
-    render() {
-        return(
-            <div className="bad-url-page">
-                <h2 className="bad-url-title">אופס, הדף שחיפשת אינו קיים.</h2>
-                <div className='bad-url-error-div'>
-                    <p className='bad-url-error'>E<span>r</span>ror</p>
-                    <p className='bad-url-code'>4<span>0</span><span>4</span></p>
-                </div>
-            </div>
-        )
-    }
+export default function BadUrl() {
+  useEffect(() => {
+    window.onload = function() {
+      document.querySelector(".cont_principal").className =
+        "cont_principal cont_error_active";
+    };
+  }, []);
+
+  return (
+    <div className="cont_principal">
+      <div className="cont_error">
+        <h1>Oops</h1>
+        <p>The Page you're looking for isn't here.</p>
+        <p className="cont_error_404">404</p>
+      </div>
+      <div className="cont_aura_1"></div>
+      <div className="cont_aura_2"></div>
+    </div>
+  );
 }
-
-export default BadUrl;

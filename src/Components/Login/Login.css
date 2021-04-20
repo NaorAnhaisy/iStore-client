@@ -1,4 +1,9 @@
-.display-flex, .display-flex-center, .signup-content, .signup-content, .social-login, .socials {
+.display-flex,
+.display-flex-center,
+.signup-content,
+.signup-content,
+.social-login,
+.socials {
   display: flex;
   display: -webkit-flex;
 }
@@ -9,10 +14,9 @@
   padding: 0;
 }
 
-
 .link-to-registration {
   color: rgb(48, 90, 228);
-  transition: color .3s;
+  transition: color 0.3s;
 }
 
 .link-to-registration:hover {
@@ -74,15 +78,15 @@
   transform: scale(1.3) translateZ(0);
 }
 
-.zmdi-facebook {
+.social-login .zmdi-facebook {
   background: #3b5998;
 }
 
-.zmdi-twitter {
+.social-login .zmdi-twitter {
   background: #1da0f2;
 }
 
-.zmdi-google {
+.social-login .zmdi-google {
   background: #e72734;
 }
 

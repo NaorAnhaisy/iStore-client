@@ -41,10 +41,8 @@ export default function Registration(props) {
 
     useEffect(() => {
         if (checkFieldsOK()) {
-            console.log("OK")
             setFieldsOK(true);
         } else {
-            console.log("BAD")
             setFieldsOK(false);
         }
     }, [checkFieldsOK])
@@ -56,7 +54,8 @@ export default function Registration(props) {
             "fullName": fullName,
             "email": email,
             "password": password,
-            "passwordRepeat": passwordRepeat
+            "passwordRepeat": passwordRepeat,
+            "isAgreeToStatementsChecked": isAgreeToStatementsChecked
         }
 
         if (email === "1@1.com") {
@@ -69,7 +68,7 @@ export default function Registration(props) {
     return (
         <div className="account-forms-main">
             <section>
-                <div className="container account-forms-container">
+                <div className="container account-forms-container account-forms-container-width">
                     <div className="signup-content">
                         <div className="signup-form">
                             <h2 className="form-title">Sign up</h2>

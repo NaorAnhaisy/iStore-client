@@ -54,7 +54,7 @@ export default function ResetPass(props) {
     return (
         <div className="account-forms-main">
             <section>
-                <div className="container account-forms-container">
+                <div className="container account-forms-container account-forms-container-width">
                     <div className="signup-content">
                         {!isValidToken ?
                             <div className="forgot-pass-form">

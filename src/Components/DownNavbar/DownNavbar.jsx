@@ -14,10 +14,10 @@ class DownNavbar extends Component {
                             <tbody>
                                 <tr>
                                     <td style={{ width: "50%" }} className="copyright-span">
-                                        This website developed by <a className="developer-name" href="https://github.com/NaorAnhaisy">Naor Anhaisy</a>
+                                        iStore © {new Date().getFullYear()} - All Rights Reserve.
                                     </td>
                                     <td style={{ width: "50%" }} className="about-site">
-                                        iStore © {new Date().getFullYear()} - All Rights Reserve.
+                                        Designed & Dev by <a className="developer-name" href="https://github.com/NaorAnhaisy">Naor Anhaisy</a>
                                     </td>
                                 </tr>
                             </tbody>

@@ -3,6 +3,7 @@
     color: white;
     display: block;
     padding: 15px;
+    z-index: 20;
 }
 
 .about-site {
