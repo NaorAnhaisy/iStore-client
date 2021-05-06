@@ -1,5 +1,8 @@
 .forgot-pass-form {
   margin: auto;
+  width: 100%;
+  word-break: break-word;
+  overflow: hidden;
 }
 
 .forgot-pass-btn-icons {
@@ -13,4 +16,10 @@
 
 .forgot-pass-btn-row {
   direction: rtl;
+}
+
+.forgot-password-email-div-input {
+  max-width: 600px !important;
+  margin-right: auto;
+  margin-left: auto;
 }

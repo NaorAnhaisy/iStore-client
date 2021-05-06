@@ -11,11 +11,11 @@
 
 .contact-us-form-main {
   padding: 10px 10px;
-  margin: 60px auto;
+  margin: 44px auto;
 }
 
 .contact-us-info-panel {
-  background: #3e2093;
+  background: linear-gradient(45deg, #002338, #475c8c);
   margin: 0;
   padding: 35px 20px;
   border-radius: 10px;
@@ -41,6 +41,7 @@
 .contact-us-info-table td {
   text-align: left;
   padding-bottom: 2em;
+  word-break: break-word;
 }
 
 .contact-us-info-table td:first-child {
@@ -81,28 +82,79 @@
 }
 
 .contact-us-2nd-fieldset .form-element {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .contact-us-form {
-  margin-right: 40px;
-  margin-left: 40px;
+  /* margin-right: 40px;
+  margin-left: 40px; */
+  margin: auto;
 }
 
-@media screen and (max-width: 1200px) {
-  .contact-us-form-container-width {
+.contact-us-form-container {
+  display: flex;
+}
+
+@media screen and (min-width: 1200px) {
+  .contact-us-form-container {
+    max-width: 80%;
+  }
+}
+
+@media screen and (min-width: 612px) and (max-width: 1200px) {
+  .contact-us-form-container {
     width: calc(100% - 30px);
     max-width: 100%;
   }
 }
 
-@media screen and (min-width: 1024px) {
-  .contact-us-form-container-width {
-    max-width: 80%;
+@media screen and (max-width: 612px) {
+  .contact-us-form-container {
+    margin: 0;
+    width: 100%;
+    display: block;
+  }
+
+  .contact-us-form {
+    padding: 0;
+    margin: 20px;
+  }
+
+  .contact-us-fieldset {
+    display: contents;
+  }
+
+  .contact-us-fieldset .form-element {
+    width: 100%;
   }
 }
 
 .contact-us-info-table a {
   color: inherit;
   text-decoration: inherit;
+}
+
+.contact-us-succes-msg {
+  margin: auto 20px;
+  font-size: 23px;
+  padding: 10px;
+  white-space: break-spaces;
+}
+
+.contact-us-succes-submsg {
+  font-size: 18px;
+}
+
+.contact-us-error-msg {
+  margin-top: 10px;
+}
+
+.contact-us-rotate-loader {
+  margin: 30px auto;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1500px) {
+  .contact-us-form {
+    margin: auto 30px;
+  }
 }

@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ContactUs.css";
+import AOS from "aos";
+// import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  FormLabel,
+  FormControl,
+  FormControlLabel,
+  RadioGroup,
+  Radio,
+} from "@material-ui/core";
 import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 import RoomIcon from "@material-ui/icons/Room";
-import { makeStyles } from "@material-ui/core/styles";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import { FormLabel } from "@material-ui/core";
-// import axios from 'axios';
+import RotateLoader from "../Loaders/RotateLoader/RotateLoader";
+// import { serverApiUrl } from "../../globals";
 
 const radioOptions = ["First Option", "Second Option", "Third Option", "Other"];
 
@@ -25,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "inherit",
   },
   radioFormLabel: {
-    fontFamily: "inherit"
+    fontFamily: "inherit",
   },
   formControl: {
     display: "block",
@@ -41,9 +46,19 @@ export default function ContactUs() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [askType, setAskType] = useState("");
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSendSucced, setIsSendSucced] = useState(false);
+  const [returnedMessage, setReturenedMessage] = useState(null);
+  const [returnedSubMsg, setReturnedSubMsg] = useState(null);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    setIsLoading(true);
     const contactData = {
       firstName: firstName,
       lastName: lastName,
@@ -55,26 +70,43 @@ export default function ContactUs() {
 
     console.log(contactData);
 
-    // try {
-    //     axios.post(serverApiUrl + "/visitCards/contactOwnerFromUser", messageToSend)
-    //         .then(response => {
-    //             setSucced(true);
-    //             handleResult(response.data.message);
-    //         })
-    //         .catch(err => {
-    //             const resMessage =
-    //                 (err.response &&
-    //                     err.response.data &&
-    //                     err.response.data.message) ||
-    //                 err.message ||
-    //                 err.toString();
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSendSucced(true);
+      setReturenedMessage(
+        "Message sent Succesfully!"
+      );
+      setReturnedSubMsg(
+        "We will be back to you as soon as we can!. Thank You!"
+      );
+    }, 2000);
 
-    //             console.error(resMessage);
-    //             handleResult(resMessage);
-    //         });
+    // try {
+    //   axios
+    //     .post(serverApiUrl + "/general/ContactUs", contactData)
+    //     .then((response) => {
+    //       setIsLoading(false);
+    //       setIsSendSucced(true);
+    //       setReturenedMessage(response.data.message);
+    //       setReturnedSubMsg(response.data.subMessage);
+    //     })
+    //     .catch((err) => {
+    //       const resMessage =
+    //         (err.response && err.response.data && err.response.data.message) ||
+    //         err.message ||
+    //         err.toString();
+
+    //       console.error(resMessage);
+
+    //       setIsLoading(false);
+    //       setIsSendSucced(false);
+    //       setReturenedMessage(resMessage);
+    //     });
     // } catch (error) {
-    //     console.error(error);
-    //     handleResult(error);
+    //   console.error(error);
+    //   setIsLoading(false);
+    //   setIsSendSucced(false);
+    //   setReturenedMessage(error);
     // }
   };
 
@@ -85,8 +117,8 @@ export default function ContactUs() {
         Any questions or remarks? Just write us a message!
       </p>
 
-      <div className="contact-us-form-main account-forms-container contact-us-form-container-width signup-content">
-        <div className="signup-image contact-us-info-panel">
+      <div className="contact-us-form-main account-forms-container contact-us-form-container">
+        <div className="contact-us-info-panel">
           <h4>Contact Information</h4>
           <p>Fill up the form and our team will back to you within 24 hours.</p>
           <table cellPadding={5} className="contact-us-info-table">
@@ -151,125 +183,171 @@ export default function ContactUs() {
           </div>
         </div>
         <div className="signup-form contact-us-form">
-          <form id="contact-card-owner-form" onSubmit={handleSubmit}>
-            <fieldset className="contact-us-fieldset">
-              <div
-                className="form-element form-input"
-                style={{ marginRight: "20px" }}
-              >
-                <input
-                  className="form-element-field"
-                  placeholder=" "
-                  type="text"
-                  spellCheck="false"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  required
-                />
-                <div className="form-element-bar"></div>
-                <label className="form-element-label">
-                  <i className="fas fa-user form-account-icon"></i>
-                  First Name
-                </label>
-              </div>
-              <div className="form-element form-input">
-                <input
-                  className="form-element-field"
-                  placeholder=" "
-                  type="text"
-                  spellCheck="false"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  required
-                />
-                <div className="form-element-bar"></div>
-                <label className="form-element-label">Last Name</label>
-              </div>
-            </fieldset>
-            <fieldset className="contact-us-fieldset contact-us-2nd-fieldset">
-              <div
-                className="form-element form-input"
-                style={{ marginRight: "20px" }}
-              >
-                <input
-                  className="form-element-field"
-                  placeholder=" "
-                  type="email"
-                  spellCheck="false"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <div className="form-element-bar"></div>
-                <label className="form-element-label">
-                  <i className="fas fa-at form-account-icon"></i>
-                  Mail
-                </label>
-              </div>
-              <div className="form-element form-input">
-                <input
-                  className="form-element-field"
-                  placeholder=" "
-                  type="text"
-                  spellCheck="false"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  required
-                />
-                <div className="form-element-bar"></div>
-                <label className="form-element-label">
-                  <i className="fas fa-phone form-account-icon"></i>
-                  Phone
-                </label>
-              </div>
-            </fieldset>
-            <FormControl className={classes.formControl} component="fieldset">
-              <FormLabel className={classes.radioFormLabel} component="legend">What type of ask you need?</FormLabel>
-              <RadioGroup
-                className={classes.radioGroup}
-                aria-label="quiz"
-                name="quiz"
-                value={askType}
-                onChange={(e) => setAskType(e.target.value)}
-              >
-                {radioOptions.map((value, i) => {
-                  return (
-                    <FormControlLabel
-                      value={value}
-                      key={i}
-                      control={<Radio required color="primary" />}
-                      label={value}
-                      classes={{
-                        root: classes.radioRoot,
-                        label: classes.radioLabel,
-                      }}
-                    />
-                  );
-                })}
-              </RadioGroup>
-            </FormControl>
+          {returnedMessage && isSendSucced ? (
+            <p
+              data-aos="fade-zoom-in"
+              data-aos-once={true}
+              data-aos-duration="600"
+              className="forgot-pass-msg succes-msg succes-msg-background contact-us-succes-msg"
+            >
+              {returnedMessage}
+              {returnedSubMsg && (
+                <>
+                  <br />
+                  <span className="contact-us-succes-submsg">
+                    {returnedSubMsg}
+                  </span>
+                </>
+              )}
+            </p>
+          ) : (
+            <form id="contact-card-owner-form" onSubmit={handleSubmit}>
+              <fieldset className="contact-us-fieldset">
+                <div
+                  className="form-element form-input"
+                  style={{ marginRight: "20px" }}
+                >
+                  <input
+                    className="form-element-field"
+                    placeholder=" "
+                    type="text"
+                    spellCheck="false"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    required
+                  />
+                  <div className="form-element-bar"></div>
+                  <label className="form-element-label">
+                    <i className="fas fa-user form-account-icon"></i>
+                    First Name
+                  </label>
+                </div>
+                <div className="form-element form-input">
+                  <input
+                    className="form-element-field"
+                    placeholder=" "
+                    type="text"
+                    spellCheck="false"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    required
+                  />
+                  <div className="form-element-bar"></div>
+                  <label className="form-element-label">Last Name</label>
+                </div>
+              </fieldset>
+              <fieldset className="contact-us-fieldset contact-us-2nd-fieldset">
+                <div
+                  className="form-element form-input"
+                  style={{ marginRight: "20px" }}
+                >
+                  <input
+                    className="form-element-field"
+                    placeholder=" "
+                    type="email"
+                    spellCheck="false"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                  <div className="form-element-bar"></div>
+                  <label className="form-element-label">
+                    <i className="fas fa-at form-account-icon"></i>
+                    Mail
+                  </label>
+                </div>
+                <div className="form-element form-input">
+                  <input
+                    className="form-element-field"
+                    placeholder=" "
+                    type="text"
+                    spellCheck="false"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    required
+                  />
+                  <div className="form-element-bar"></div>
+                  <label className="form-element-label">
+                    <i className="fas fa-phone form-account-icon"></i>
+                    Phone
+                  </label>
+                </div>
+              </fieldset>
+              <FormControl className={classes.formControl} component="fieldset">
+                <FormLabel
+                  className={classes.radioFormLabel}
+                  component="legend"
+                >
+                  What type of ask you need?
+                </FormLabel>
+                <RadioGroup
+                  className={classes.radioGroup}
+                  aria-label="quiz"
+                  name="quiz"
+                  value={askType}
+                  onChange={(e) => setAskType(e.target.value)}
+                >
+                  {radioOptions.map((value, i) => {
+                    return (
+                      <FormControlLabel
+                        value={value}
+                        key={i}
+                        control={<Radio required color="primary" />}
+                        label={value}
+                        classes={{
+                          root: classes.radioRoot,
+                          label: classes.radioLabel,
+                        }}
+                      />
+                    );
+                  })}
+                </RadioGroup>
+              </FormControl>
 
-            <div className="form-element form-input">
-              <textarea
-                className="form-element-field"
-                required
-                rows="3"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-              ></textarea>
-              <div className="form-element-bar"></div>
-              <label className="form-element-label">
-                <i className="fas fa-comment-dots form-account-icon"></i>
-                Message
-              </label>
-            </div>
+              <div className="form-element form-input">
+                <textarea
+                  className="form-element-field"
+                  required
+                  rows="3"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                ></textarea>
+                <div className="form-element-bar"></div>
+                <label className="form-element-label">
+                  <i className="fas fa-comment-dots form-account-icon"></i>
+                  Message
+                </label>
+              </div>
 
-            <div className="form-actions">
-              <button className="form-btn" type="submit">
-                Send Message
-              </button>
-            </div>
-          </form>
+              {isLoading ? (
+                <div
+                  data-aos="fade-zoom-in"
+                  data-aos-once={true}
+                  data-aos-duration="1600"
+                >
+                  <RotateLoader className="contact-us-rotate-loader" />
+                </div>
+              ) : (
+                <>
+                  <div className="form-actions">
+                    <button className="form-btn" type="submit">
+                      Send Message
+                    </button>
+                  </div>
+                  {returnedMessage && !isSendSucced && (
+                    <p
+                      data-aos="fade-zoom-in"
+                      data-aos-once={true}
+                      data-aos-duration="500"
+                      className="error-msg error-msg-background contact-us-error-msg"
+                    >
+                      {returnedMessage}
+                    </p>
+                  )}
+                </>
+              )}
+            </form>
+          )}
         </div>
       </div>
     </div>

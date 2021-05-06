@@ -15,6 +15,8 @@
   color: #222;
   font-family: Poppins;
   font-size: 36px;
+  margin-bottom: 33px;
+  text-align: left;
 }
 
 .account-forms-main {
@@ -34,11 +36,11 @@
 .account-forms-container {
   background: #fff;
   margin: 0 auto;
-  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-  -o-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
-  -ms-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  box-shadow: -1px 5px 16.83px 0.17px rgb(0 0 0 / 24%);
+  -moz-box-shadow: -1px 5px 16.83px 0.17px rgb(0 0 0 / 24%);
+  -webkit-box-shadow: -1px 5px 16.83px 0.17px rgb(0 0 0 / 24%);
+  -o-box-shadow: -1px 5px 16.83px 0.17px rgb(0 0 0 / 24%);
+  -ms-box-shadow: -1px 5px 16.83px 0.17px rgb(0 0 0 / 24%);
   border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -99,11 +101,6 @@
   margin: 0 55px;
 }
 
-.form-title {
-  margin-bottom: 33px;
-  text-align: left;
-}
-
 .signup-image {
   margin-top: 45px;
 }
@@ -131,7 +128,7 @@
 }
 
 .signup-content {
-  padding: 75px 0;
+  padding: 75px 20px;
   padding-top: 67px;
   padding-bottom: 87px;
 }
@@ -185,6 +182,7 @@
   }
   .signup-image {
     margin: auto;
+    width: 100%;
   }
   .form-button {
     text-align: center;
@@ -212,11 +210,11 @@
   width: 100%;
   cursor: pointer;
   border: 1px solid transparent;
-  padding: 5px 24px;
+  padding: 6px;
   margin-top: 2.25rem;
   position: relative;
   z-index: 0;
-  transition: transform 0.28s ease;
+  transition: all 0.28s ease;
   will-change: transform;
 }
 
@@ -510,8 +508,8 @@ select.form-element-field {
 }
 
 .succes-msg-background {
-  background: honeydew;
-  padding: 5px;
+  background: #caffca;
+  padding: 8px 15px;
 }
 
 .error-msg {
@@ -519,7 +517,7 @@ select.form-element-field {
 }
 
 .error-msg-background {
-  background: #ffeae9;
+  background: #ffe8e7;
   padding: 5px;
 }
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import './RotateLoader.css';
 
-export default function RotateLoader() {
+export default function RotateLoader(props) {
     return (
-        <div class="loader02"></div>
+        <div className={props.className + " rotate-loader"}></div>
     )
 }

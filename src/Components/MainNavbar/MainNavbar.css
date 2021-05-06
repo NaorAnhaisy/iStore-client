@@ -51,16 +51,20 @@
 .open-menu {
   position: fixed;
   top: 20px;
-  left: 10px;
+  left: 0;
   z-index: 997;
-  box-shadow: 3px 3px 3px rgba(51, 51, 51, 0.2);
   background: #233a52;
+  opacity: 0.75;
   font-size: 19px;
   color: white;
+  border-radius: 0;
+  border: none;
+  outline: none !important;
 }
 
-.open-menu:hover {
-  background: #78afe9c2;
+.open-menu:hover, .open-menu:focus, .open-menu:active, .open-menu:active:focus {
+  background: #78afe9;
+  opacity: 1;
 }
 
 .open-menu.btn-customized, .open-menu.btn-customized:hover, .open-menu.btn-customized:active, .open-menu.btn-customized:focus, .open-menu.btn-customized:active:focus, .open-menu.btn-customized.active:focus, .open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active, .open-menu.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {

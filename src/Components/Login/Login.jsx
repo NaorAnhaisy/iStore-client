@@ -1,19 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { clientUrl } from "../../globals";
-// import AuthService from '../../Auth/AuthService';
-// import axios from 'axios';
+import AOS from "aos";
+// import Cookie from "js-cookie";
+// import AuthService from "../../Auth/AuthService";
 
 export default function Login(props) {
+  const history = useHistory();
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  // const [message, setMessage] = useState(null);
-  // const [succeed, setSucced] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    setIsLoading(true);
     const userData = {
       email: email,
       password: password,
@@ -21,26 +28,44 @@ export default function Login(props) {
 
     console.log(userData);
 
-    // try {
-    //     axios.post(serverApiUrl + "/visitCards/contactOwnerFromUser", messageToSend)
-    //         .then(response => {
-    //             setSucced(true);
-    //             handleResult(response.data.message);
-    //         })
-    //         .catch(err => {
-    //             const resMessage =
-    //                 (err.response &&
-    //                     err.response.data &&
-    //                     err.response.data.message) ||
-    //                 err.message ||
-    //                 err.toString();
+    setTimeout(() => {
+      setIsLoading(false);
+      if (userData.email === "1@1.com" && userData.password === "111") {
+        history.push("/Dashboard");
+      } else {
+        setErrorMsg("Email or password are not correct");
+      }
+    }, 1500);
 
-    //             console.error(resMessage);
-    //             handleResult(resMessage);
-    //         });
+    // try {
+    //   AuthService.loginUser(userData).then(
+    //     (response) => {
+    //       setIsLoading(false);
+    //       if (response?.data?.token) {
+    //         Cookie.set("token", response.data.token);
+    //         Cookie.set("user", response.data.user);
+    //         history.push("/Dashboard");
+    //       } else {
+    //         setErrorMsg("Problem accured. No token has recieved. Please try again later.");
+    //       }
+    //     },
+    //     (error) => {
+    //       setIsLoading(false);
+    //       const resMessage =
+    //         (error.response &&
+    //           error.response.data &&
+    //           error.response.data.message) ||
+    //         error.message ||
+    //         error.toString();
+
+    //       console.error(error);
+    //       setErrorMsg(resMessage);
+    //     }
+    //   );
     // } catch (error) {
-    //     console.error(error);
-    //     handleResult(error);
+    //   setIsLoading(false);
+    //   console.error(error);
+    //   setErrorMsg(error);
     // }
   };
 
@@ -97,10 +122,24 @@ export default function Login(props) {
                   </div>
                 </fieldset>
                 <div className="form-actions">
-                  <button className="form-btn" type="submit">
-                    Login
+                  <button
+                    className="form-btn"
+                    type="submit"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Loading..." : "Login"}
                   </button>
                 </div>
+                {errorMsg && (
+                  <p
+                    data-aos="fade-zoom-in"
+                    data-aos-once={true}
+                    data-aos-duration="500"
+                    className="error-msg error-msg-background contact-us-error-msg"
+                  >
+                    {errorMsg}
+                  </p>
+                )}
               </form>
               <div className="social-login">
                 <span className="social-label">Or login with</span>

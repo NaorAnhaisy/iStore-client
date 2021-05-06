@@ -1,6 +1,6 @@
 import axios from "axios";
-import Cookie from "js-cookie";
 import { serverApiUrl } from '../globals';
+import Cookie from "js-cookie";
 
 const USERS_API_URL = serverApiUrl + "/users";
 const AUTH_API_URL = serverApiUrl + "/auth";
@@ -9,46 +9,34 @@ axios.defaults.headers.common['x-access-token'] = "Bearer " + token;
 
 class AuthService {
 
-  login(userToLog) {
+  registerUser(newUser) {
     return axios
-      .post(USERS_API_URL + "/login", userToLog)
-      .then(response => {
-        if (response.data.token) {
-          Cookie.set("token", response.data.token);
-          Cookie.set("user", response.data.user);
-        }
-      });
+      .post(USERS_API_URL + "/register", newUser);
+  }
+
+  loginUser(userData) {
+    return axios
+      .post(USERS_API_URL + "/login", userData);
   }
 
   forgotPassword(userEmail) {
     return axios
-      .post(USERS_API_URL + "/forgot", userEmail)
+      .post(USERS_API_URL + "/forgot", userEmail);
   }
 
-  resetPasswordGet(token) {
+  resetPasswordGetToken(token) {
     return axios
-      .get(USERS_API_URL + "/reset/" + token)
+      .get(USERS_API_URL + "/reset/" + token);
   }
 
   resetPasswordPost(token, passwordsObj) {
     return axios
-      .post(USERS_API_URL + "/reset/" + token, passwordsObj)
+      .post(USERS_API_URL + "/reset/" + token, passwordsObj);
   }
 
   logout() {
     Cookie.remove('token');
     Cookie.remove('user');
-  }
-
-  register(newUser) {
-    return axios
-      .post(USERS_API_URL + "/register", newUser)
-      .then(response => {
-        if (response.data.token) {
-          Cookie.set("token", response.data.token);
-          Cookie.set("user", response.data.user);
-        }
-      });
   }
 
   getCurrentUserToken() {
