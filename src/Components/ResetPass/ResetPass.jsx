@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from "react";
 import "./ResetPass.css";
 import { useParams } from "react-router-dom";
 import { schema } from "../../globals";
-// import AuthService from "../../Auth/AuthService";
 import RotateLoader from "../Loaders/RotateLoader/RotateLoader";
 import AOS from "aos";
 // import { Form, Button, Container, InputGroup, Col } from 'react-bootstrap';
@@ -141,8 +140,7 @@ export default function ResetPass(props) {
                         />
                         <div className="form-element-bar"></div>
                         <label className="form-element-label">
-                          <i className="fas fa-lock form-account-icon"></i>New
-                        Password
+                          <i className="fas fa-lock form-account-icon"></i>New Password
                       </label>
                       </div>
                       <div className="form-element form-input">
@@ -156,7 +154,7 @@ export default function ResetPass(props) {
                         <div className="form-element-bar"></div>
                         <label className="form-element-label">
                           <i className="fas fa-user-check form-account-icon"></i>
-                        And repeat that password ...
+                        And Repeat That Password...
                       </label>
                       </div>
                     </fieldset>
@@ -170,8 +168,23 @@ export default function ResetPass(props) {
                       I'm Good to Go!
                     </button>
                     </div>
-                    {
-                      isLoading && <RotateLoader />
+                    {isLoading ? <div style={{ marginTop: "42px" }}>
+                      <RotateLoader />
+                    </div>
+                      :
+                      !isSucced && message &&
+                      (
+                        <p
+                          data-aos="fade-zoom-in"
+                          data-aos-once={true}
+                          data-aos-duration="600"
+                          className={
+                            "forgot-pass-msg " +
+                            (isSucced
+                              ? "succes-msg-background succes-msg"
+                              : "error-msg-background error-msg")
+                          }>{message}</p>
+                      )
                     }
                   </form>
                 }
