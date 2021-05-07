@@ -73,7 +73,7 @@ export default function Login(props) {
     <div className="account-forms-main">
       <section>
         <div className="container account-forms-container account-forms-container-width">
-          <div className="signup-content">
+          <div className="signup-content display-flex">
             <div className="signup-image">
               <figure className="form-account-image">
                 <img src="/images/signin-image.png" alt="sing up" />

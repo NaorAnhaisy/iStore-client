@@ -103,7 +103,7 @@ export default function Registration(props) {
     <div className="account-forms-main">
       <section>
         <div className="container account-forms-container account-forms-container-width">
-          <div className="signup-content">
+          <div className="signup-content display-flex">
             <div className="signup-form">
               <h2 className="form-title">Sign up</h2>
               <form id="contact-card-owner-form" onSubmit={handleSubmit}>
