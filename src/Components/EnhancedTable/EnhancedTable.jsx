@@ -117,6 +117,9 @@ function EnhancedTableHead(props) {
     onRequestSort,
   } = props;
 
+  const checked = rowCount > 0 && numSelected === rowCount;
+  const indeterminate = numSelected > 0 && numSelected < rowCount;
+
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -126,9 +129,9 @@ function EnhancedTableHead(props) {
       <TableRow>
         <TableCell padding="checkbox">
           <Checkbox
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick} 
+            indeterminate={indeterminate}
+            checked={checked}
+            onClick={() => onSelectAllClick(!indeterminate && !checked)}
           />
         </TableCell>
         {headCells.map((headCell) => (
@@ -175,13 +178,13 @@ const useToolbarStyles = makeStyles((theme) => ({
   highlight:
     theme.palette.type === "light"
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
+        color: theme.palette.secondary.main,
+        backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+      }
       : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.secondary.dark,
+      },
   title: {
     flex: "1 1 100%",
   },
@@ -189,7 +192,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
-  const { numSelected } = props;
+  const { numSelected, deleteSelectedRows } = props;
 
   return (
     <Toolbar
@@ -219,7 +222,9 @@ const EnhancedTableToolbar = (props) => {
 
       {numSelected > 0 && (
         <Tooltip title="Delete">
-          <IconButton classes={{ root: "enhanced-table-delete-icon-btn" }}>
+          <IconButton
+            classes={{ root: "enhanced-table-delete-icon-btn" }}
+            onClick={deleteSelectedRows}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>
@@ -230,6 +235,7 @@ const EnhancedTableToolbar = (props) => {
 
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
+  deleteSelectedRows: PropTypes.func.isRequired
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -270,14 +276,13 @@ export default function EnhancedTable() {
     setOrderBy(property);
   };
 
-  const onSelectAllClick = () => {
-    console.log("onSelectAllClick");
-    // if (event?.target?.checked) {
-    //   const newSelecteds = rows.map((n) => n.id);
-    //   setSelected(newSelecteds);
-    //   return;
-    // }
-    // setSelected([]);
+  const onSelectAllClick = (needToSelectAll) => {
+    if (needToSelectAll) {
+      const newSelecteds = rows.map((n) => n.id);
+      setSelected(newSelecteds);
+    } else {
+      setSelected([]);
+    }
   };
 
   const handleClick = (id) => {
@@ -309,6 +314,11 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
+  const handleDeleteAllSelected = () => {
+    alert("Delete all the log elements")
+    console.log(selected)
+  };
+
   const isSelected = (id) => selected.indexOf(id) !== -1;
 
   const emptyRows =
@@ -317,7 +327,7 @@ export default function EnhancedTable() {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} deleteSelectedRows={handleDeleteAllSelected} />
         <TableContainer>
           <Table className={classes.table} size="medium">
             <EnhancedTableHead

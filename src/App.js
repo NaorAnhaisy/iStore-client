@@ -15,7 +15,6 @@ import BadUrl from './Components/BadUrl/BadUrl';
 import Dashboard from './Components/Dashboard/Dashboard';
 import StoreProducts from './Components/StoreProducts/StoreProducts';
 import StoreOrders from './Components/StoreOrders/StoreOrders';
-import Settings from './Components/Settings/Settings';
 import ContactUs from './Components/ContactUs/ContactUs';
 import Darkmode from 'darkmode-js';
 
@@ -47,7 +46,6 @@ function App() {
           <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Dashboard" component={Dashboard} />
           <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/StoreProducts" component={StoreProducts} />
           <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/StoreOrders" component={StoreOrders} />
-          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Settings" component={Settings} />
           <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/ContactUs" component={ContactUs} />
           <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} path="*" component={BadUrl} />
         </Switch>

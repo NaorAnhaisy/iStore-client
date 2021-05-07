@@ -77,7 +77,7 @@ export default function ContactUs() {
         "Message sent Succesfully!"
       );
       setReturnedSubMsg(
-        "We will be back to you as soon as we can!. Thank You!"
+        "We will be back to you as soon as we can."
       );
     }, 2000);
 
@@ -276,7 +276,6 @@ export default function ContactUs() {
               <FormControl className={classes.formControl} component="fieldset">
                 <FormLabel
                   className={classes.radioFormLabel}
-                  component="legend"
                 >
                   What type of ask you need?
                 </FormLabel>

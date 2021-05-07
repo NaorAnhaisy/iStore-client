@@ -220,7 +220,7 @@ export default function Registration(props) {
             </div>
             <div className="signup-image">
               <figure className="form-account-image">
-                <img src="/images/signup-image.png" alt="sing up" />
+                <img src="/images/signup-image.png" alt="sing up" className="undragablle-image" />
               </figure>
               <span className="signup-image-link">
                 <Link to="/Login" className="link-to-login">
