@@ -177,8 +177,44 @@ export default function Registration(props) {
                       Repeat your password
                     </label>
                   </div>
-                  <div className="agree-to-policy-div">
-                    <input
+                  <div>
+                    <table>
+                      <tr>
+                        <td>
+                          <input className="regist-checkbox-inp"
+                            id="isChecked"
+                            type="checkbox"
+                            value=""
+                            name="isChecked"
+                            checked={isAgreeToStatementsChecked}
+                            onChange={() =>
+                              setAgreeToStatementsChecked(!isAgreeToStatementsChecked)
+                            } />
+                          <label className="regist-checkbox-label" for="isChecked" style={{display: "inherit"}}>
+                            <span>
+                              <svg width="12px" height="10px" inline-svg viewbox="0 0 12 10">
+                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                              </svg>
+                            </span>
+                          </label>
+                        </td>
+                        <td>
+                          <span>
+                            I agree all statements in{" "}
+                            <a
+                              href={clientUrl + "/Policy"}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Terms of service
+                        </a>{" "}
+                        of <strong>iStore</strong>
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    {/* <input
                       type="checkbox"
                       id="isChecked"
                       value=""
@@ -204,7 +240,7 @@ export default function Registration(props) {
                         of <strong>iStore</strong>
                       </span>
                       <span className="regist-checkbox-span"></span>
-                    </label>
+                    </label> */}
                   </div>
                 </fieldset>
                 <div className="form-actions">
