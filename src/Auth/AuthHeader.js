@@ -1,12 +1,6 @@
 import Cookie from "js-cookie";
 
 export default function authHeader() {
-    const token = Cookie.get("token") ? 
-        Cookie.get("token") : null;
-
-    if (token) {
-        return { 'x-access-token': token };
-    }
-    
-    return null;
+    const token = Cookie.get("token");
+    return token ? { 'x-access-token': token } : null;
 }

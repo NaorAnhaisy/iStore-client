@@ -3,7 +3,7 @@ import "./Login.css";
 import { Link, useHistory } from "react-router-dom";
 import { clientUrl } from "../../globals";
 import AOS from "aos";
-// import Cookie from "js-cookie";
+import Cookie from "js-cookie";
 // import AuthService from "../../Auth/AuthService";
 
 export default function Login(props) {
@@ -32,6 +32,8 @@ export default function Login(props) {
       setIsLoading(false);
       if (userData.email === "1@1.com" && userData.password === "111") {
         history.push("/Dashboard");
+        Cookie.set("token", "SomeToken");
+        Cookie.set("user", "ShouldBeUserInfo");
       } else {
         setErrorMsg("Email or password are not correct");
       }

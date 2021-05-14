@@ -3,6 +3,7 @@ import './MainNavbar.css';
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
 import { clientUrl } from '../../globals';
+import AuthService from '../../Auth/AuthService';
 
 const firstNavLinksSection = [
     { name: "Dashboard", icon: "home" },
@@ -12,10 +13,12 @@ const firstNavLinksSection = [
     { name: "Contact Us", icon: "envelope" },
 ]
 
-const secondNavLinksSection = [
-    { name: "Login", icon: "user" },
-    { name: "Register", icon: "sign-in-alt" }
-]
+const secondNavLinksSection = AuthService.getCurrentUserToken() ?
+    [{ name: "Logout", icon: "sign-in-alt" }] :
+    [
+        { name: "Login", icon: "sign-in-alt" },
+        { name: "Register", icon: "user" }
+    ];
 
 export default function MainNavbar() {
     const [activeNav, setActiveNav] = useState("logo");
@@ -46,12 +49,18 @@ export default function MainNavbar() {
         if (found) setActiveNav(found.name);
     }
 
+    function handleLogoutClicked() {
+        AuthService.logout();
+    }
+
     const createNavbarLiElements = (elementsDataArray) => {
         let htmlElements = [];
         elementsDataArray.forEach(elementData => {
             let elementNameToLink = elementData.name.replace(/ /g, '');
             let htmlElement = <li className={(activeNav === elementNameToLink ? "active" : "")} key={"navbar_" + elementNameToLink}>
-                <Link to={'/' + elementNameToLink} className="close-navbar-onClick" onClick={() => setActiveNav(elementNameToLink)}>
+                <Link to={elementNameToLink === 'Logout' ? '/' : '/' + elementNameToLink}
+                    className="close-navbar-onClick"
+                    onClick={() => elementNameToLink === 'Logout' ? handleLogoutClicked() : setActiveNav(elementNameToLink)}>
                     <i className={"fas fa-" + elementData.icon}></i> {elementData.name}
                 </Link>
             </li>
