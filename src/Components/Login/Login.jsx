@@ -72,7 +72,11 @@ export default function Login(props) {
   };
 
   return (
-    <div className="account-forms-main">
+    <div className="account-forms-main"
+      data-aos="fade-zoom-in"
+      data-aos-once={true}
+      data-aos-duration="400"
+    >
       <section>
         <div className="container account-forms-container account-forms-container-width">
           <div className="signup-content display-flex">

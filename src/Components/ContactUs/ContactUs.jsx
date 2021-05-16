@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ContactUs.css";
 import AOS from "aos";
-// import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   FormLabel,
@@ -14,6 +13,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 import RoomIcon from "@material-ui/icons/Room";
 import RotateLoader from "../Loaders/RotateLoader/RotateLoader";
+// import axios from "axios";
 // import { serverApiUrl } from "../../globals";
 
 const radioOptions = ["First Option", "Second Option", "Third Option", "Other"];
@@ -111,7 +111,11 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="p-3">
+    <div className="p-3"
+      data-aos="fade-zoom-in"
+      data-aos-once={true}
+      data-aos-duration="500"
+    >
       <h1 className="form-title contact-us-header">Contact Us</h1>
       <p className="contact-us-subtitle">
         Any questions or remarks? Just write us a message!
@@ -260,8 +264,9 @@ export default function ContactUs() {
                   <input
                     className="form-element-field"
                     placeholder=" "
-                    type="text"
-                    spellCheck="false"
+                    type="tel"
+                    pattern="[0-9()#&+*-=.]+"
+                    title="Allowed to use only numbers & Phone Characters (#, -, *,)."
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     required
@@ -279,10 +284,11 @@ export default function ContactUs() {
                 >
                   What type of ask you need?
                 </FormLabel>
+                <br/>
                 <RadioGroup
                   className={classes.radioGroup}
-                  aria-label="quiz"
-                  name="quiz"
+                  aria-label="askType"
+                  name="askType"
                   value={askType}
                   onChange={(e) => setAskType(e.target.value)}
                 >
@@ -328,7 +334,7 @@ export default function ContactUs() {
                 </div>
               ) : (
                 <>
-                  <div className="form-actions">
+                  <div className="form-actions contact-us-form-submit-div">
                     <button className="form-btn" type="submit">
                       Send Message
                     </button>

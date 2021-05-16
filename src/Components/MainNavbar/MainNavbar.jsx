@@ -4,7 +4,9 @@ import $ from 'jquery';
 import { Link } from 'react-router-dom';
 import { clientUrl } from '../../globals';
 import AuthService from '../../Auth/AuthService';
-
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+ 
 const firstNavLinksSection = [
     { name: "Dashboard", icon: "home" },
     { name: "Store Products", icon: "pencil-alt" },
@@ -33,7 +35,22 @@ export default function MainNavbar() {
             $('.collapse.show').toggleClass('show');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
-    })
+
+        cookies.addChangeListener(() => {
+            console.log("HERE")
+        })
+
+        // document.cookie.addEventListener('change', (e) => handleCookieChanged(e));
+
+        // return () => {
+        //     document.cookie.removeEventListener('change', handleCookieChanged);
+        // }
+    }, [])
+
+    function handleCookieChanged(e) {
+        console.log(e)
+        console.log("HERE1")
+    }
 
     function dismissNavbar() {
         $('.sidebar').removeClass('active');

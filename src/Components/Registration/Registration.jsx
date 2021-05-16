@@ -100,7 +100,11 @@ export default function Registration(props) {
   };
 
   return (
-    <div className="account-forms-main">
+    <div className="account-forms-main"
+      data-aos="fade-zoom-in"
+      data-aos-once={true}
+      data-aos-duration="400"
+    >
       <section>
         <div className="container account-forms-container account-forms-container-width">
           <div className="signup-content display-flex">
@@ -190,7 +194,7 @@ export default function Registration(props) {
                             onChange={() =>
                               setAgreeToStatementsChecked(!isAgreeToStatementsChecked)
                             } />
-                          <label className="regist-checkbox-label" for="isChecked" style={{display: "inherit"}}>
+                          <label className="regist-checkbox-label" for="isChecked" style={{ display: "inherit" }}>
                             <span>
                               <svg width="12px" height="10px" inline-svg viewbox="0 0 12 10">
                                 <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
