@@ -37,7 +37,7 @@ export default function MainNavbar() {
         });
 
         cookies.addChangeListener(() => {
-            console.log("HERE")
+            console.log("cookies.addChangeListener")
         })
 
         // document.cookie.addEventListener('change', (e) => handleCookieChanged(e));
@@ -47,10 +47,10 @@ export default function MainNavbar() {
         // }
     }, [])
 
-    function handleCookieChanged(e) {
-        console.log(e)
-        console.log("HERE1")
-    }
+    // function handleCookieChanged(e) {
+    //     console.log(e)
+    //     console.log("HERE1")
+    // }
 
     function dismissNavbar() {
         $('.sidebar').removeClass('active');

@@ -6,6 +6,7 @@ import ReactTooltip from "react-tooltip";
 // import Cookie from "js-cookie";
 // import AuthService from "../../Auth/AuthService";
 import { clientUrl, schema } from "../../globals";
+import AOS from "aos";
 
 var validator = require("email-validator");
 
@@ -15,23 +16,27 @@ export default function Registration(props) {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [passwordRepeat, setPasswordRepeat] = useState(null);
-  const [isAgreeToStatementsChecked, setAgreeToStatementsChecked] = useState(
-    false
-  );
+  const [isAgreeToStatementsChecked, setAgreeToStatementsChecked] = useState(false);
   const [isFieldsOK, setFieldsOK] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasPasswordBeenFocused, setHasPasswordBeenFocused] = useState(false);
+  const [isPasswordValid, setPasswordValid] = useState(false);
 
   const { addToast } = useToasts();
+
+  const validatePassword = useCallback((password) => {
+    return schema.validate(password);
+  }, []);
 
   const checkFieldsOK = useCallback(() => {
     return (
       fullName &&
       validator.validate(email) &&
-      schema.validate(password) &&
+      validatePassword(password) &&
       passwordRepeat === password &&
       isAgreeToStatementsChecked
     );
-  }, [fullName, email, password, passwordRepeat, isAgreeToStatementsChecked]);
+  }, [fullName, email, password, passwordRepeat, isAgreeToStatementsChecked, validatePassword]);
 
   useEffect(() => {
     if (checkFieldsOK()) {
@@ -41,8 +46,24 @@ export default function Registration(props) {
     }
   }, [checkFieldsOK]);
 
+  useEffect(() => {
+    isPasswordValid && setHasPasswordBeenFocused(false);
+  }, [isPasswordValid])
+
+  useEffect(() => {
+    console.log("hasPasswordBeenFocused: " + hasPasswordBeenFocused)
+  }, [hasPasswordBeenFocused])
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!isFieldsOK) {
+      addToast("Some fields are not valid, Please check them and try again.", { appearance: "error" });
+      return;
+    }
 
     setIsLoading(true);
     const userData = {
@@ -143,22 +164,28 @@ export default function Registration(props) {
                       <i className="far fa-smile"></i>
                     </small>
                   </div>
-                  <div className="form-element form-input">
+                  <div className={"form-element form-input " +
+                    ((hasPasswordBeenFocused && !isPasswordValid) ?
+                      "password-focused-and-not-valid-div" : "")}>
                     <input
                       className="form-element-field"
                       placeholder=" "
                       type="password"
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                        setPasswordValid(validatePassword(e.target.value));
+                      }}
+                      onBlur={() => !isPasswordValid && setHasPasswordBeenFocused(true)}
                       required
                       data-html={true}
                       data-class="regist-password-requirements-ul"
                       data-tip="Password Must:
-                                                <ul >
-                                                <li> Minimum 8 Characters </li>
-                                                <li> Minimum 1 Digit </li>
-                                                <li> Minimum 1 Uppercase letter</li>
-                                                <li> Minimum 1 Lowercase letter</li>
-                                                </ul>"
+                        <ul>
+                        <li> Minimum 8 Characters </li>
+                        <li> Minimum 1 Digit </li>
+                        <li> Minimum 1 Uppercase letter</li>
+                        <li> Minimum 1 Lowercase letter</li>
+                        </ul>"
                       data-event="focusin"
                       data-event-off="focusout"
                     />
@@ -166,6 +193,15 @@ export default function Registration(props) {
                     <label className="form-element-label">
                       <i className="fas fa-lock form-account-icon"></i>Password
                     </label>
+                    {hasPasswordBeenFocused && !isPasswordValid &&
+                      <small className="form-element-hint error-color"
+                        data-aos="fade-zoom-in"
+                        data-aos-once={true}
+                        data-aos-duration="400">
+                        Password is invalid{" "}
+                        <i class="fas fa-exclamation-triangle"></i>
+                      </small>
+                    }
                   </div>
                   <div className="form-element form-input">
                     <input
@@ -183,68 +219,42 @@ export default function Registration(props) {
                   </div>
                   <div>
                     <table>
-                      <tr>
-                        <td>
-                          <input className="regist-checkbox-inp"
-                            id="isChecked"
-                            type="checkbox"
-                            value=""
-                            name="isChecked"
-                            checked={isAgreeToStatementsChecked}
-                            onChange={() =>
-                              setAgreeToStatementsChecked(!isAgreeToStatementsChecked)
-                            } />
-                          <label className="regist-checkbox-label" for="isChecked" style={{ display: "inherit" }}>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <input className="regist-checkbox-inp"
+                              id="isChecked"
+                              type="checkbox"
+                              value=""
+                              name="isChecked"
+                              checked={isAgreeToStatementsChecked}
+                              onChange={() =>
+                                setAgreeToStatementsChecked(!isAgreeToStatementsChecked)
+                              } />
+                            <label className="regist-checkbox-label" htmlFor="isChecked" style={{ display: "inherit" }}>
+                              <span>
+                                <svg width="12px" height="10px" viewBox="0 0 12 10">
+                                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg>
+                              </span>
+                            </label>
+                          </td>
+                          <td>
                             <span>
-                              <svg width="12px" height="10px" inline-svg viewbox="0 0 12 10">
-                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                              </svg>
+                              I agree all statements in{" "}
+                              <a
+                                href={clientUrl + "/Policy"}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                Terms of service
+                        </a>{" "}
+                        of <strong>iStore</strong>
                             </span>
-                          </label>
-                        </td>
-                        <td>
-                          <span>
-                            I agree all statements in{" "}
-                            <a
-                              href={clientUrl + "/Policy"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Terms of service
-                        </a>{" "}
-                        of <strong>iStore</strong>
-                          </span>
-                        </td>
-                      </tr>
+                          </td>
+                        </tr>
+                      </tbody>
                     </table>
-
-                    {/* <input
-                      type="checkbox"
-                      id="isChecked"
-                      value=""
-                      name="isChecked"
-                      checked={isAgreeToStatementsChecked}
-                      onChange={() =>
-                        setAgreeToStatementsChecked(!isAgreeToStatementsChecked)
-                      }
-                    />
-                    <label
-                      className="regist-checkbox-label"
-                      htmlFor="isChecked"
-                    >
-                      <span>
-                        I agree all statements in{" "}
-                        <a
-                          href={clientUrl + "/Policy"}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Terms of service
-                        </a>{" "}
-                        of <strong>iStore</strong>
-                      </span>
-                      <span className="regist-checkbox-span"></span>
-                    </label> */}
                   </div>
                 </fieldset>
                 <div className="form-actions">

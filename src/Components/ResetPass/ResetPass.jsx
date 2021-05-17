@@ -8,6 +8,8 @@ import AOS from "aos";
 // import AuthService from '../../Auth/AuthService'
 // import { Link } from 'react-router-dom';
 import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
+import { useToasts } from "react-toast-notifications";
+import ReactTooltip from "react-tooltip";
 
 export default function ResetPass(props) {
   const { token } = useParams();
@@ -19,6 +21,8 @@ export default function ResetPass(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSucced, setIsSucced] = useState(false);
   const [message, setMessage] = useState(null);
+
+  const { addToast } = useToasts();
 
   useEffect(() => {
     AOS.init();
@@ -43,6 +47,11 @@ export default function ResetPass(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!isFieldsOK) {
+      addToast("Some fields are not valid, Please check them and try again.", { appearance: "error" });
+      return;
+    }
+
     setIsLoading(true);
 
     // const userData = {
@@ -149,11 +158,22 @@ export default function ResetPass(props) {
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
+                                data-html={true}
+                                data-class="regist-password-requirements-ul"
+                                data-tip="Password Must:
+                                  <ul>
+                                  <li> Minimum 8 Characters </li>
+                                  <li> Minimum 1 Digit </li>
+                                  <li> Minimum 1 Uppercase letter</li>
+                                  <li> Minimum 1 Lowercase letter</li>
+                                  </ul>"
+                                data-event="focusin"
+                                data-event-off="focusout"
                               />
                               <div className="form-element-bar"></div>
                               <label className="form-element-label">
                                 <i className="fas fa-lock form-account-icon"></i>New Password
-                      </label>
+                              </label>
                             </div>
                             <div className="form-element form-input">
                               <input
@@ -165,9 +185,8 @@ export default function ResetPass(props) {
                               />
                               <div className="form-element-bar"></div>
                               <label className="form-element-label">
-                                <i className="fas fa-user-check form-account-icon"></i>
-                        And Repeat That Password...
-                      </label>
+                                <i className="fas fa-user-check form-account-icon"></i>And Repeat That Password...
+                              </label>
                             </div>
                           </fieldset>
                           <div className="form-actions">
@@ -177,8 +196,8 @@ export default function ResetPass(props) {
                               type="submit"
                             >
                               <i className="fas fa-check-double reset-password-check-icon"></i>
-                      I'm Good to Go!
-                    </button>
+                              I'm Good to Go!
+                            </button>
                           </div>
                           {isLoading ? <div style={{ marginTop: "42px" }}>
                             <RotateLoader />
@@ -200,6 +219,7 @@ export default function ResetPass(props) {
                     }
                   </div>
                 )}
+                <ReactTooltip place="top" type="info" effect="solid" />
               </div>
             }
           </div>

@@ -34,7 +34,7 @@ darkmode.showWidget();
 function App() {
   return (
     <div className="App">
-      <ToastProvider autoDismiss={true} placement='bottom-right'>
+      <ToastProvider autoDismiss={true} autoDismissTimeout={10000} placement='bottom-right'>
         <Switch>
           <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path={"/"} component={Home} />
           <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/scrollTo/:scrollDiv" component={Home} />
