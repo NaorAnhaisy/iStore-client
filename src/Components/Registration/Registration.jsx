@@ -243,7 +243,7 @@ export default function Registration(props) {
                             <span>
                               I agree all statements in{" "}
                               <a
-                                href={clientUrl + "/Policy"}
+                                href={clientUrl + "/policy"}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
@@ -273,7 +273,7 @@ export default function Registration(props) {
                 <img src="/images/signup-image.png" alt="sing up" className="undragablle-image" />
               </figure>
               <span className="signup-image-link">
-                <Link to="/Login" className="link-to-login">
+                <Link to="/login" className="link-to-login">
                   I am already member
                 </Link>
               </span>

@@ -4,22 +4,20 @@ import $ from 'jquery';
 import { Link } from 'react-router-dom';
 import { clientUrl } from '../../globals';
 import AuthService from '../../Auth/AuthService';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
  
 const firstNavLinksSection = [
-    { name: "Dashboard", icon: "home" },
-    { name: "Store Products", icon: "pencil-alt" },
-    { name: "Store Orders", icon: "store" },
-    { name: "Settings", icon: "cog" },
-    { name: "Contact Us", icon: "envelope" },
+    { name: "Dashboard", linkTo: "dashboard", icon: "home" },
+    { name: "Store Products", linkTo: "storeProducts", icon: "pencil-alt" },
+    { name: "Builder UI", linkTo: "builderUI", icon: "store" },
+    { name: "Settings", linkTo: "settings", icon: "cog" },
+    { name: "Contact Us", linkTo: "contactUs", icon: "envelope" },
 ]
 
 const secondNavLinksSection = AuthService.getCurrentUserToken() ?
     [{ name: "Logout", icon: "sign-in-alt" }] :
     [
-        { name: "Login", icon: "sign-in-alt" },
-        { name: "Register", icon: "user" }
+        { name: "Login", linkTo: "login", icon: "sign-in-alt" },
+        { name: "Register", linkTo: "register", icon: "user" }
     ];
 
 export default function MainNavbar() {
@@ -35,22 +33,7 @@ export default function MainNavbar() {
             $('.collapse.show').toggleClass('show');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
-
-        cookies.addChangeListener(() => {
-            console.log("cookies.addChangeListener")
-        })
-
-        // document.cookie.addEventListener('change', (e) => handleCookieChanged(e));
-
-        // return () => {
-        //     document.cookie.removeEventListener('change', handleCookieChanged);
-        // }
     }, [])
-
-    // function handleCookieChanged(e) {
-    //     console.log(e)
-    //     console.log("HERE1")
-    // }
 
     function dismissNavbar() {
         $('.sidebar').removeClass('active');
@@ -73,11 +56,11 @@ export default function MainNavbar() {
     const createNavbarLiElements = (elementsDataArray) => {
         let htmlElements = [];
         elementsDataArray.forEach(elementData => {
-            let elementNameToLink = elementData.name.replace(/ /g, '');
-            let htmlElement = <li className={(activeNav === elementNameToLink ? "active" : "")} key={"navbar_" + elementNameToLink}>
-                <Link to={elementNameToLink === 'Logout' ? '/' : '/' + elementNameToLink}
+            let elementLinkTo = elementData.linkTo;
+            let htmlElement = <li className={(activeNav === elementLinkTo ? "active" : "")} key={"navbar_" + elementLinkTo}>
+                <Link to={elementData.name === 'Logout' ? '/' : '/' + elementLinkTo}
                     className="close-navbar-onClick"
-                    onClick={() => elementNameToLink === 'Logout' ? handleLogoutClicked() : setActiveNav(elementNameToLink)}>
+                    onClick={() => elementData.name === 'Logout' ? handleLogoutClicked() : setActiveNav(elementLinkTo)}>
                     <i className={"fas fa-" + elementData.icon}></i> {elementData.name}
                 </Link>
             </li>

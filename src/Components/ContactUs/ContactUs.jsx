@@ -132,7 +132,7 @@ export default function ContactUs() {
                   <PhoneIcon />
                 </td>
                 <td>
-                  <a href="tel:0525561128">+972 5561128</a>
+                  <a href="tel:0525561128" className="contact-us-our-info">+972 5561128</a>
                 </td>
               </tr>
               <tr>
@@ -140,7 +140,7 @@ export default function ContactUs() {
                   <EmailIcon />
                 </td>
                 <td>
-                  <a href="mailto:naor.anhaisy123@gmail.com?subject=Mail from iStore">
+                  <a href="mailto:naor.anhaisy123@gmail.com?subject=Mail from iStore" className="contact-us-our-info">
                     naor.anhaisy123@gmail.com
                   </a>
                 </td>
@@ -153,6 +153,7 @@ export default function ContactUs() {
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="contact-us-our-info"
                     href="https://www.google.com/maps/search/?api=1&query=Rabinovich St. 38, Holon, Israel"
                   >
                     Rabinovich St. 38, Holon, Israel

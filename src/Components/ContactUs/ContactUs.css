@@ -114,16 +114,13 @@
     width: 100%;
     display: block;
   }
-
   .contact-us-form {
     padding: 0;
     margin: 20px;
   }
-
   .contact-us-fieldset {
     display: contents;
   }
-
   .contact-us-fieldset .form-element {
     width: 100%;
   }
@@ -161,4 +158,13 @@
 
 .contact-us-form-submit-div {
   margin-bottom: 20px;
+}
+
+.contact-us-our-info {
+  color: white;
+  transition: color .5s;
+}
+
+.contact-us-our-info:hover {
+  color: rgb(198, 223, 255);
 }

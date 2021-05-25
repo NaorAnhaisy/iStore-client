@@ -135,7 +135,7 @@ export default function ResetPass(props) {
                             {message}
                           </p>
                           <span className="signup-image-link">
-                            <Link to="/Login" className="link-to-login reset-password-login-link">
+                            <Link to="/login" className="link-to-login reset-password-login-link">
                               Login<TrendingFlatIcon />
                             </Link>
                           </span>

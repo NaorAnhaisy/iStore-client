@@ -14,7 +14,7 @@ import ResetPass from './Components/ResetPass/ResetPass';
 import BadUrl from './Components/BadUrl/BadUrl';
 import Dashboard from './Components/Dashboard/Dashboard';
 import StoreProducts from './Components/StoreProducts/StoreProducts';
-import StoreOrders from './Components/StoreOrders/StoreOrders';
+import BuilderUI from './Components/BuilderUI/BuilderUI';
 import ContactUs from './Components/ContactUs/ContactUs';
 import Darkmode from 'darkmode-js';
 
@@ -38,15 +38,15 @@ function App() {
         <Switch>
           <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path={"/"} component={Home} />
           <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/scrollTo/:scrollDiv" component={Home} />
-          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Register" component={Registration} />
-          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Login" component={Login} />
-          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Login/Forgot" component={ForgotPass} />
-          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Login/Reset/:token" component={ResetPass} />
-          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Policy" component={Policy} />
-          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/Dashboard" component={Dashboard} />
-          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/StoreProducts" component={StoreProducts} />
-          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/StoreOrders" component={StoreOrders} />
-          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/ContactUs" component={ContactUs} />
+          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/register" component={Registration} />
+          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/login" component={Login} />
+          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/login/forgot" component={ForgotPass} />
+          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/login/reset/:token" component={ResetPass} />
+          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/policy" component={Policy} />
+          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/dashboard" component={Dashboard} />
+          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/storeProducts" component={StoreProducts} />
+          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/builderUI" component={BuilderUI} />
+          <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} exact path="/contactUs" component={ContactUs} />
           <AppRoute navBar={MainNavbar} downNavBar={DownNavbar} path="*" component={BadUrl} />
         </Switch>
       </ToastProvider>

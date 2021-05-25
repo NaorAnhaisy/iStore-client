@@ -34,6 +34,7 @@ export default function Login(props) {
         history.push("/Dashboard");
         Cookie.set("token", "SomeToken");
         Cookie.set("user", "ShouldBeUserInfo");
+        window.location.reload();
       } else {
         setErrorMsg("Email or password are not correct");
       }
@@ -91,7 +92,7 @@ export default function Login(props) {
                 </Link>
               </span>
               <span className="signup-image-link">
-                <Link to="/Login/Forgot" className="link-to-registration">
+                <Link to="/Login/forgot" className="link-to-registration">
                   Forgot your password?
                 </Link>
               </span>
